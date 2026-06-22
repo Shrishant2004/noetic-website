@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Noetic — AI-powered keyboard for iPhone. Fix grammar, rewrite tone, translate, and more without leaving the app.">
+  <meta property="og:title" content="Noetic — AI Keyboard for iPhone">
+  <meta property="og:description" content="AI-powered keyboard that fixes grammar, rewrites tone, translates to 40 languages, and summarizes text.">
+  <meta property="og:image" content="noetic-logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Noetic — AI Keyboard for iPhone">
+  <meta name="twitter:description" content="Fix grammar, rewrite tone, translate in any app.">
+  <meta name="twitter:image" content="noetic-logo.png">
+  <link rel="canonical" href="https://yoursite.com/index.html">
+  <link rel="icon" href="noetic-logo.png" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="NoeticLogoblack.png" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#08080F" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <title>Noetic — AI Keyboard for iPhone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=Sora:wght@800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <div class="nav-logo">
+      <img src="noetic-logo.png" alt="Noetic" class="logo-img" loading="lazy">
+      <span class="logo-text">Noetic</span>
+    </div>
+    
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+    
+    <button class="btn btn-pill-download nav-cta" onclick="window.location.href='#'">Download Free</button>
+    
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  
+  <div class="nav-mobile" id="nav-mobile">
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="#" class="btn btn-pill-download" style="width: 100%; text-align: center; display: block;">Download Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="snap-presentation-cylinder">
+
+  <section class="section section-hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="section-content reveal">
+        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+          <div class="glass" style="padding: 0.75rem 1.5rem; border-radius: 100px; display: flex; align-items: center; gap: 0.5rem; width: fit-content; margin: 0 auto;">
+            <span class="badge-pulse" style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--blue);"></span>
+            <span style="font-size: 13px; font-weight: 600;">Now on the App Store</span>
+          </div>
+        </div>
+        
+        <h1 style="text-align: center; margin-bottom: 0.5rem; font-weight: 200;">Write better.</h1>
+        <h1 style="text-align: center; margin-bottom: 2rem; background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 800;">In any app.</h1>
+        
+        <p style="text-align: center; font-size: 16px; margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto;">Noetic is an AI keyboard that fixes grammar, rewrites your tone, translates to 40 languages, and summarizes text — without leaving the app you're in.</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 300px; margin: 0 auto; margin-bottom: 2rem;">
+          <a href="#" style="display: block; text-align: center;">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 54px; width: auto;">
+          </a>
+          <button class="btn btn-gradient-glow btn-bounce" style="width: 100%;" onclick="document.querySelector('#features').scrollIntoView({behavior:'smooth'});">
+            See how it works
+          </button>
+        </div>
+        
+        <p style="text-align: center; font-size: 13px; color: var(--text-tertiary);">
+          Free to start · No keystroke logging · Works in every app
+        </p>
+      </div>
+    </div>
+
+    <!-- Premium Scroll Indicator -->
+    <div class="hero-scroll-indicator" onclick="document.querySelector('#features').scrollIntoView({behavior:'smooth'});">
+      <span class="scroll-label">SCROLL TO EXPLORE</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <section class="section features-intro-slide" id="features">
+    <div class="container universe-split-container">
+      <div class="universe-text-side">
+        <h2 class="universe-headline" id="universe-headline"></h2>
+        <p class="universe-subheadline" id="universe-subheadline"></p>
+      </div>
+      <div class="universe-animation-side">
+        <div class="universe-container">
+          <!-- Ambient lighting behind rings (Signature Move Aurora) -->
+          <div class="universe-aurora"></div>
+          <canvas id="noetic-universe-canvas"></canvas>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Premium Scroll Indicator -->
+    <div class="hero-scroll-indicator" onclick="document.querySelector('#features-showcase').scrollIntoView({behavior:'smooth'});">
+      <span class="scroll-label">SCROLL TO EXPLORE</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="pinned-showcase-container" id="features-showcase">
+    <!-- Full-Width Background Glow Aura -->
+    <div class="showcase-bg-glow-wrapper">
+      <div class="showcase-bg-glow-sticky-container">
+        <div class="showcase-bg-glow glow-grammar active" data-glow="grammar"></div>
+        <div class="showcase-bg-glow glow-tone" data-glow="tone"></div>
+        <div class="showcase-bg-glow glow-assist" data-glow="assist"></div>
+        <div class="showcase-bg-glow glow-summarize" data-glow="summarize"></div>
+        <div class="showcase-bg-glow glow-translate" data-glow="translate"></div>
+      </div>
+    </div>
+    
+    <!-- Desktop Pinned Sticky Frame (hidden on mobile) -->
+    <div class="showcase-sticky-panel">
+      <div class="premium-glass-frame-wrap">
+        <div class="premium-glass-frame">
+          <div class="glass-frame-glow glow-blue" id="showcase-glow-indicator"></div>
+          <div class="glass-demo-iframes">
+            <iframe src="demo-grammar.html" class="showcase-iframe active" data-feature="grammar" width="230" height="720" frameborder="0" scrolling="no" allowtransparency="true" loading="eager"></iframe>
+            <iframe src="demo-tone.html" class="showcase-iframe" data-feature="tone" width="230" height="720" frameborder="0" scrolling="no" allowtransparency="true" loading="eager"></iframe>
+            <iframe src="demo-assist.html" class="showcase-iframe" data-feature="assist" width="230" height="720" frameborder="0" scrolling="no" allowtransparency="true" loading="eager"></iframe>
+            <iframe src="demo-summarize.html" class="showcase-iframe" data-feature="summarize" width="230" height="720" frameborder="0" scrolling="no" allowtransparency="true" loading="eager"></iframe>
+            <iframe src="demo-translate.html" class="showcase-iframe" data-feature="translate" width="230" height="720" frameborder="0" scrolling="no" allowtransparency="true" loading="eager"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrolling Text Column -->
+    <div class="showcase-scroll-column">
+      
+      <!-- Grammar Fix -->
+      <div class="showcase-text-block active" data-feature="grammar" id="feature-grammar">
+        <div class="showcase-text-inner">
+          <div class="feat-chip feat-chip-blue">Grammar Fix</div>
+          <h3 class="feat-h3">Fix errors.<br>Instantly.</h3>
+          <p class="feat-p">One tap corrects every typo, grammar slip, and punctuation mistake — without changing what you meant to say. No matter how fast you type.</p>
+          <ul class="feat-list">
+            <li>Spelling and grammar corrected</li>
+            <li>Punctuation fixed automatically</li>
+            <li>Your meaning always preserved</li>
+          </ul>
+        </div>
+        <div class="mobile-only-demo-wrap">
+          <div class="feature-glow glow-blue"></div>
+          <iframe src="demo-grammar.html" width="230" height="720" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <!-- Tone Rewrite -->
+      <div class="showcase-text-block" data-feature="tone" id="feature-tone">
+        <div class="showcase-text-inner">
+          <div class="feat-chip feat-chip-violet">Tone Rewrite</div>
+          <h3 class="feat-h3">20+ tones.<br>One tap.</h3>
+          <p class="feat-p">From boardroom formal to Gen Z casual, Noetic rewrites your words in exactly the voice the moment calls for — without changing what you meant to say.</p>
+          <ul class="feat-list">
+            <li>20+ distinct tone options</li>
+            <li>Matches any context or audience</li>
+            <li>Core message always preserved</li>
+          </ul>
+        </div>
+        <div class="mobile-only-demo-wrap">
+          <div class="feature-glow glow-violet"></div>
+          <iframe src="demo-tone.html" width="230" height="720" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <!-- AI Assist -->
+      <div class="showcase-text-block" data-feature="assist" id="feature-assist">
+        <div class="showcase-text-inner">
+          <div class="feat-chip feat-chip-blue">AI Assist</div>
+          <h3 class="feat-h3">Rephrase<br>anything.</h3>
+          <p class="feat-p">Stuck on how to say something? Noetic rephrases, expands, simplifies, or formalizes any text in seconds — like having a writing coach inside your keyboard.</p>
+          <ul class="feat-list">
+            <li>Rephrase for clarity or flow</li>
+            <li>Expand short notes into paragraphs</li>
+            <li>Simplify complex phrasing</li>
+          </ul>
+        </div>
+        <div class="mobile-only-demo-wrap">
+          <div class="feature-glow glow-mixed"></div>
+          <iframe src="demo-assist.html" width="230" height="720" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <!-- Summarize -->
+      <div class="showcase-text-block" data-feature="summarize" id="feature-summarize">
+        <div class="showcase-text-inner">
+          <div class="feat-chip feat-chip-gold">Summarize</div>
+          <h3 class="feat-h3">Long text,<br>instant bullets.</h3>
+          <p class="feat-p">Turn walls of text into crisp bullet points. Summarize long messages, articles, or email threads in one tap — and actually remember what they said.</p>
+          <ul class="feat-list">
+            <li>Long paragraphs into bullets</li>
+            <li>Every key detail captured</li>
+            <li>Works on any length of text</li>
+          </ul>
+        </div>
+        <div class="mobile-only-demo-wrap">
+          <div class="feature-glow glow-gold"></div>
+          <iframe src="demo-summarize.html" width="230" height="720" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <!-- Translate -->
+      <div class="showcase-text-block" data-feature="translate" id="feature-translate">
+        <div class="showcase-text-inner">
+          <div class="feat-chip feat-chip-blue">Translate</div>
+          <h3 class="feat-h3">40+ languages.<br>Zero friction.</h3>
+          <p class="feat-p">Translate anything into 40+ languages without ever leaving the app you're in. Message internationally, study abroad, or help family — from your keyboard.</p>
+          <ul class="feat-list">
+            <li>40+ languages supported</li>
+            <li>Accurate, natural-sounding results</li>
+            <li>Instant — no app-switching needed</li>
+          </ul>
+        </div>
+        <div class="mobile-only-demo-wrap">
+          <div class="feature-glow glow-blue"></div>
+          <iframe src="demo-translate.html" width="230" height="720" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div> <div class="continuous-scroll-wrapper">
+
+  <section class="section continuous-section" style="background: var(--bg-alt); padding: 5rem 0;">
+    <div class="container reveal">
+      <h2 style="text-align: center; margin-bottom: 0.5rem;">20+ Tones. One tap.</h2>
+      <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; font-size: 16px;">From boardroom to group chat — Noetic matches your voice.</p>
+      
+      <div class="marquee" style="margin-bottom: 1.5rem;">
+        <div class="marquee-track">
+          <span class="tone-pill blue">Professional</span>
+          <span class="tone-pill violet">Casual</span>
+          <span class="tone-pill gold">Gen Z</span>
+          <span class="tone-pill blue">Funny</span>
+          <span class="tone-pill violet">Flirty</span>
+          <span class="tone-pill gold">Scholarly</span>
+          <span class="tone-pill blue">Empathetic</span>
+          <span class="tone-pill violet">Bold</span>
+          <span class="tone-pill gold">Poetic</span>
+          <span class="tone-pill blue">Diplomatic</span>
+          <span class="tone-pill violet">Professional</span>
+          <span class="tone-pill gold">Casual</span>
+          <span class="tone-pill blue">Gen Z</span>
+          <span class="tone-pill violet">Funny</span>
+          <span class="tone-pill gold">Flirty</span>
+          <span class="tone-pill blue">Scholarly</span>
+          <span class="tone-pill violet">Empathetic</span>
+          <span class="tone-pill gold">Bold</span>
+          <span class="tone-pill blue">Poetic</span>
+          <span class="tone-pill violet">Diplomatic</span>
+        </div>
+      </div>
+      
+      <div class="marquee">
+        <div class="marquee-track reverse">
+          <span class="tone-pill gold">Friendly</span>
+          <span class="tone-pill blue">Sarcastic</span>
+          <span class="tone-pill violet">Motivational</span>
+          <span class="tone-pill gold">Formal</span>
+          <span class="tone-pill blue">Concise</span>
+          <span class="tone-pill violet">Romantic</span>
+          <span class="tone-pill gold">Assertive</span>
+          <span class="tone-pill blue">Witty</span>
+          <span class="tone-pill violet">Warm</span>
+          <span class="tone-pill gold">Playful</span>
+          <span class="tone-pill blue">Friendly</span>
+          <span class="tone-pill violet">Sarcastic</span>
+          <span class="tone-pill gold">Motivational</span>
+          <span class="tone-pill blue">Formal</span>
+          <span class="tone-pill violet">Concise</span>
+          <span class="tone-pill gold">Romantic</span>
+          <span class="tone-pill blue">Assertive</span>
+          <span class="tone-pill violet">Witty</span>
+          <span class="tone-pill gold">Warm</span>
+          <span class="tone-pill blue">Playful</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section continuous-section" style="background: var(--bg); padding: 5rem 0;">
+    <div class="container reveal">
+      <h2 style="text-align: center; margin-bottom: 0.5rem;">We never read your keyboard.</h2>
+      <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; font-size: 16px;">Full Access is needed for AI network requests — not for logging. Passwords, messages, and browsing are never accessible to us.</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;" class="reveal-group">
+        <div class="glass" style="padding: 2rem; border-radius: var(--radius-lg);">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">🔒</div>
+          <h3 style="font-size: 16px; margin-bottom: 0.75rem; font-weight: 600;">No keystrokes logged</h3>
+          <p style="font-size: 14px; color: var(--text-tertiary);">We only process text when you explicitly tap a button. Passive monitoring is impossible by design.</p>
+        </div>
+        
+        <div class="glass" style="padding: 2rem; border-radius: var(--radius-lg);">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">🛡</div>
+          <h3 style="font-size: 16px; margin-bottom: 0.75rem; font-weight: 600;">Passwords never seen</h3>
+          <p style="font-size: 14px; color: var(--text-tertiary);">iOS isolates password fields completely. Our keyboard cannot access them.</p>
+        </div>
+        
+        <div class="glass" style="padding: 2rem; border-radius: var(--radius-lg);">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">🗑</div>
+          <h3 style="font-size: 16px; margin-bottom: 0.75rem; font-weight: 600;">Text not stored</h3>
+          <p style="font-size: 14px; color: var(--text-tertiary);">Your text is processed for the AI request and immediately discarded. We retain nothing.</p>
+        </div>
+        
+        <div class="glass" style="padding: 2rem; border-radius: var(--radius-lg);">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">🔐</div>
+          <h3 style="font-size: 16px; margin-bottom: 0.75rem; font-weight: 600;">Encrypted everywhere</h3>
+          <p style="font-size: 14px; color: var(--text-tertiary);">All communication uses HTTPS/TLS. Your data is protected in transit.</p>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="privacy.html" style="color: var(--text-secondary); text-decoration: underline;">Read our full Privacy Policy →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section continuous-section" id="pricing" style="background: var(--bg-alt); padding: 5rem 0;">
+    <div class="container reveal">
+      <h2 style="text-align: center; margin-bottom: 0.5rem;">Start free. Upgrade when ready.</h2>
+      <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">No credit card required for free tier.</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-chip blue">FREE</div>
+          </div>
+          <div class="pricing-price">₹0</div>
+          <div class="pricing-subtext">forever</div>
+          <ul class="pricing-features">
+            <li>50 corrections on install</li>
+            <li>All 5 AI tools</li>
+            <li>40+ languages</li>
+            <li>Earn credits by watching ads and sharing app</li>
+          </ul>
+          <button class="btn btn-primary pricing-cta" onclick="window.location.href='#'">Download Free</button>
+          <p style="text-align: center; font-size: 12px; color: var(--text-tertiary); margin-top: 1rem;">No account required</p>
+        </div>
+        
+        <div class="pricing-card pricing-popular">
+          <div class="pricing-header">
+            <div class="pricing-chip badge-popular">POPULAR</div>
+          </div>
+          <div class="pricing-price">Starting from ₹29/month</div>
+          <div class="pricing-subtext" style="margin-bottom: 0.5rem;">or ₹299/year</div>
+          <div style="display: inline-block; background: rgba(0,122,255,0.2); border-radius: 4px; padding: 0.25rem 0.75rem; font-size: 12px; color: var(--blue); margin-bottom: 1.5rem;">Save 25%</div>
+          <ul class="pricing-features">
+            <li>Generous daily corrections</li>
+            <li>All 5 AI tools</li>
+            <li>40+ languages</li>
+            <li>Earn credits via ads</li>
+          </ul>
+          <button class="btn btn-gradient pricing-cta" onclick="window.location.href='#'">Get Pro</button>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-chip gold">UNLIMITED</div>
+          </div>
+          <div class="pricing-price">Starting from ₹99/month</div>
+          <div class="pricing-subtext">or ₹999/year</div>
+          <ul class="pricing-features">
+            <li>Unlimited corrections</li>
+            <li>All 5 AI tools</li>
+            <li>40+ languages</li>
+            <li>Priority AI processing</li>
+            <li>Early access to new features</li>
+          </ul>
+          <button class="btn btn-primary pricing-cta" onclick="window.location.href='#'">Go Unlimited</button>
+        </div>
+      </div>
+      
+      <div style="text-align: center; background: var(--surface); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+        <p style="font-size: 13px; color: var(--text-secondary);">Pricing shown in Indian Rupees. Available via in-app purchase on the App Store.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section continuous-section" style="background: var(--bg); padding: 5rem 0;">
+    <div class="container reveal">
+      <h2 style="text-align: center; margin-bottom: 3rem;">Questions? Answered.</h2>
+      
+      <div style="max-width: 700px; margin: 0 auto;">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>How do I enable the Noetic keyboard?</span>
+            <div class="accordion-chevron">▼</div>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-text">Settings → General → Keyboard → Keyboards → Add New Keyboard → Noetic. Then tap Noetic in the list and enable "Allow Full Access."</div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Why does Noetic need Full Access?</span>
+            <div class="accordion-chevron">▼</div>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-text">Full Access allows the keyboard to connect to the internet for AI processing. Without it, the AI tools cannot function. This permission is never used to log your keystrokes or access your private data.</div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>How do credits work?</span>
+            <div class="accordion-chevron">▼</div>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-text">Every AI action uses one credit. Free users receive a daily credit allowance that resets at midnight. You can earn extra credits by watching a short rewarded video. Pro and Premium subscribers get higher daily limits or unlimited usage.</div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Is my text data private?</span>
+            <div class="accordion-chevron">▼</div>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-text">Yes. We only send text to our AI when you explicitly tap an action button. We never log what you type passively. Processed text is discarded immediately and not stored.</div>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>What languages does Translate support?</span>
+            <div class="accordion-chevron">▼</div>
+          </button>
+          <div class="accordion-content">
+            <div class="accordion-text">English, Hindi, Spanish, French, German, Arabic, Chinese, Japanese, Korean, Portuguese, Tamil, Telugu, Malayalam, Bengali, Kannada, Italian, and 24+ more — 40+ languages total.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="support.html" class="btn btn-ghost" style="display: inline-flex;">See all FAQs →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <div class="footer-logo">
+          <img src="noetic-logo.png" alt="Noetic" class="logo-img" style="width: 32px; height: 32px;" loading="lazy">
+          <span class="logo-text" style="font-weight: 700;">Noetic</span>
+          <p class="footer-tagline">AI that types with you.</p>
+          <p class="footer-copyright">© 2026 Noetic. All rights reserved.</p>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#feature-grammar" class="snap-deep-link">Grammar Fix</a></li>
+          <li><a href="#feature-tone" class="snap-deep-link">Tone Rewrite</a></li>
+          <li><a href="#feature-assist" class="snap-deep-link">AI Assist</a></li>
+          <li><a href="#feature-summarize" class="snap-deep-link">Summarize</a></li>
+          <li><a href="#feature-translate" class="snap-deep-link">Translate</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use (EULA)</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/noetic_aikeyboard" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.threads.com/@noetic_aikeyboard" target="_blank" rel="noopener noreferrer">Threads</a></li>
+          <li><a href="mailto:noeticaikeyboard@gmail.com?subject=Reaching%20out%20to%20Noetic&body=Hi%20Noetic%20Team,%0A%0AThank%20you%20for%20reaching%20out%20to%20us!%20" target="_blank">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Noetic is not affiliated with Apple Inc. iPhone and iOS are trademarks of Apple Inc.</p>
+    </div>
+  </footer>
+
+</div> <script src="animations.js"></script>
+</body>
+</html>
