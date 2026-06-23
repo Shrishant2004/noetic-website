@@ -3417,85 +3417,198 @@ html.no-snap {
    EXPERIMENTAL SHOWCASE DESIGN UPDATES (Suggestions 2 & 3)
    ========================================================================== */
 
-/* Showcase Floating Cards (Suggestion 2 for Grammar Fix) */
+/* Showcase Floating Cards Styling (Suggestion 2 for Grammar Fix) */
 .showcase-floating-card {
   position: absolute;
   width: 170px;
-  background: rgba(10, 10, 20, 0.6);
+  background: linear-gradient(135deg, rgba(15, 15, 30, 0.7) 0%, rgba(10, 10, 20, 0.8) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 12px 14px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65), 0 0 20px rgba(59, 130, 246, 0.12);
   opacity: 0;
-  z-index: 10;
+  z-index: 1;
   pointer-events: none;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Custom cubic-bezier for a springy, premium organic splay feel */
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .card-grammar-draft {
   left: -180px;
   top: 140px;
-  transform: translateX(-40px) translateY(10px) rotate(-6deg);
+  transform: translate(210px, 150px) scale(0.2) rotate(-25deg);
 }
 
 .card-grammar-stats {
   right: -180px;
   top: 340px;
-  transform: translateX(40px) translateY(-10px) rotate(6deg);
+  transform: translate(-380px, -55px) scale(0.2) rotate(25deg);
 }
 
-/* Active transitions */
+/* Active transitions - splay out */
 .showcase-iframe[data-feature="grammar"].active ~ .card-grammar-draft {
   opacity: 1;
-  transform: translateX(0) translateY(0) rotate(-6deg);
+  transform: translate(0, 0) scale(1) rotate(-6deg);
+  z-index: 10;
 }
 
 .showcase-iframe[data-feature="grammar"].active ~ .card-grammar-stats {
   opacity: 1;
-  transform: translateX(0) translateY(0) rotate(6deg);
+  transform: translate(0, 0) scale(1) rotate(6deg);
+  z-index: 10;
 }
 
-/* Floating card inner elements */
+/* Header & Metadata */
+.showcase-floating-card .card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
 .showcase-floating-card .card-tag {
-  display: inline-block;
-  font-size: 8px;
+  font-size: 7.5px;
   font-weight: 700;
   text-transform: uppercase;
   color: #3b82f6;
   background: rgba(59, 130, 246, 0.15);
   padding: 2px 6px;
   border-radius: 4px;
-  margin-bottom: 6px;
   letter-spacing: 0.5px;
 }
 
-.showcase-floating-card .card-icon {
-  font-size: 14px;
-  margin-bottom: 4px;
+.showcase-floating-card .card-tag-cyan {
+  color: #06b6d4;
+  background: rgba(6, 182, 212, 0.15);
+}
+
+.showcase-floating-card .card-pulse-dot {
+  width: 5px;
+  height: 5px;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #3b82f6;
+  animation: pulseDot 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.showcase-floating-card .card-spark-icon {
+  font-size: 9px;
+  color: #06b6d4;
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
 }
 
 .showcase-floating-card .card-title {
-  font-size: 11px;
-  font-weight: bold;
+  font-size: 11.5px;
+  font-weight: 700;
   color: white;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+  letter-spacing: -0.2px;
 }
 
 .showcase-floating-card .card-content {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.showcase-floating-card .error-word {
+/* Flaw diagnostics grid styling */
+.showcase-floating-card .flaw-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.02);
+  border: 0.5px solid rgba(255, 255, 255, 0.04);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 9px;
+}
+
+.showcase-floating-card .flaw-err {
   color: #ff453a;
-  text-decoration: underline;
-  text-decoration-color: rgba(255, 69, 58, 0.5);
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+.showcase-floating-card .flaw-arrow {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 8px;
+}
+
+.showcase-floating-card .flaw-fix {
+  color: #30d158;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(48, 209, 88, 0.15);
+}
+
+/* Stats metrics rows styling */
+.showcase-floating-card .stat-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9.5px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: 4px;
+}
+
+.showcase-floating-card .stat-row:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.showcase-floating-card .stat-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.showcase-floating-card .stat-val {
+  color: white;
   font-weight: 600;
 }
 
+.showcase-floating-card .stat-val-glow {
+  color: #30d158;
+  text-shadow: 0 0 8px rgba(48, 209, 88, 0.3);
+}
+
+.showcase-floating-card .card-footer {
+  font-size: 7.5px;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 8px;
+  text-align: right;
+}
+
+/* Loader bar styling */
+.showcase-floating-card .card-progress-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.showcase-floating-card .card-progress-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  border-radius: 2px;
+  transform: translateX(-100%);
+}
+
+.showcase-iframe[data-feature="grammar"].active ~ .card-grammar-stats .card-progress-fill {
+  animation: fillProgress 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes fillProgress {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
 
 /* Hide floating cards on mobile viewports */
 @media (max-width: 960px) {
