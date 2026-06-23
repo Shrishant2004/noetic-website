@@ -1067,32 +1067,32 @@ a:hover {
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(140px);
+  filter: blur(120px);
   pointer-events: none;
-  opacity: 0.45;
+  opacity: 0.55;
   mix-blend-mode: screen;
   z-index: 1;
 }
 .orb-1 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0, 122, 255, 0.4) 0%, transparent 70%);
-  top: -10%;
-  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 122, 255, 0.28) 0%, transparent 70%);
+  top: -5%;
+  left: -5%;
   animation: drift-1 25s ease-in-out infinite;
 }
 .orb-2 {
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
-  bottom: 10%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, transparent 70%);
+  bottom: 5%;
   right: -5%;
   animation: drift-2 20s ease-in-out infinite;
 }
 .orb-3 {
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(255, 176, 32, 0.2) 0%, transparent 70%);
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(255, 176, 32, 0.15) 0%, transparent 70%);
   bottom: -10%;
   left: 20%;
   animation: drift-3 30s ease-in-out infinite;
