@@ -3460,154 +3460,43 @@ html.no-snap {
   z-index: 10;
 }
 
-/* Header & Metadata */
-.showcase-floating-card .card-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
+/* Floating card inner elements (Sleek layout) */
 .showcase-floating-card .card-tag {
-  font-size: 7.5px;
+  display: inline-block;
+  font-size: 8px;
   font-weight: 700;
   text-transform: uppercase;
   color: #3b82f6;
   background: rgba(59, 130, 246, 0.15);
   padding: 2px 6px;
   border-radius: 4px;
+  margin-bottom: 6px;
   letter-spacing: 0.5px;
 }
 
-.showcase-floating-card .card-tag-cyan {
-  color: #06b6d4;
-  background: rgba(6, 182, 212, 0.15);
-}
-
-.showcase-floating-card .card-pulse-dot {
-  width: 5px;
-  height: 5px;
-  background-color: #3b82f6;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #3b82f6;
-  animation: pulseDot 1.5s infinite ease-in-out;
-}
-
-@keyframes pulseDot {
-  0%, 100% { opacity: 0.4; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-.showcase-floating-card .card-spark-icon {
-  font-size: 9px;
-  color: #06b6d4;
-  text-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
+.showcase-floating-card .card-icon {
+  font-size: 14px;
+  margin-bottom: 4px;
 }
 
 .showcase-floating-card .card-title {
-  font-size: 11.5px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: bold;
   color: white;
-  margin-bottom: 10px;
-  letter-spacing: -0.2px;
+  margin-bottom: 6px;
 }
 
 .showcase-floating-card .card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
 }
 
-/* Flaw diagnostics grid styling */
-.showcase-floating-card .flaw-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(255, 255, 255, 0.02);
-  border: 0.5px solid rgba(255, 255, 255, 0.04);
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: 9px;
-}
-
-.showcase-floating-card .flaw-err {
+.showcase-floating-card .error-word {
   color: #ff453a;
-  text-decoration: line-through;
-  opacity: 0.8;
-}
-
-.showcase-floating-card .flaw-arrow {
-  color: rgba(255, 255, 255, 0.2);
-  font-size: 8px;
-}
-
-.showcase-floating-card .flaw-fix {
-  color: #30d158;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 69, 58, 0.5);
   font-weight: 600;
-  text-shadow: 0 0 8px rgba(48, 209, 88, 0.15);
-}
-
-/* Stats metrics rows styling */
-.showcase-floating-card .stat-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 9.5px;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
-  padding-bottom: 4px;
-}
-
-.showcase-floating-card .stat-row:last-of-type {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.showcase-floating-card .stat-label {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.showcase-floating-card .stat-val {
-  color: white;
-  font-weight: 600;
-}
-
-.showcase-floating-card .stat-val-glow {
-  color: #30d158;
-  text-shadow: 0 0 8px rgba(48, 209, 88, 0.3);
-}
-
-.showcase-floating-card .card-footer {
-  font-size: 7.5px;
-  color: rgba(255, 255, 255, 0.25);
-  margin-top: 8px;
-  text-align: right;
-}
-
-/* Loader bar styling */
-.showcase-floating-card .card-progress-bar {
-  width: 100%;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-top: 6px;
-}
-
-.showcase-floating-card .card-progress-fill {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, #3b82f6, #06b6d4);
-  border-radius: 2px;
-  transform: translateX(-100%);
-}
-
-.showcase-iframe[data-feature="grammar"].active ~ .card-grammar-stats .card-progress-fill {
-  animation: fillProgress 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 0.6s;
-}
-
-@keyframes fillProgress {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(0); }
 }
 
 /* Hide floating cards on mobile viewports */
