@@ -190,19 +190,19 @@ function setupParticleWaveCanvas() {
   const logoImage = new Image();
   logoImage.src = 'noetic-logo.png';
 
-  // Squeezed multi-tier radius metrics (Downscaled by 30% to prevent edge clipping)
+  // Squeezed multi-tier radius metrics (Increased size for a grander solar system look)
   appConfigs.forEach((cfg, idx) => {
     const img = new Image();
     img.src = `./assets/apps/${cfg.file}`;
     
-    const orbitScale = 0.135 + (idx * 0.028); 
+    const orbitScale = 0.15 + (idx * 0.032); 
     const speedVal = 0.004; 
     apps.push({
       img,
       name: cfg.name,
       baseColor: cfg.color,
-      a: orbitScale * 1.25, 
-      b: orbitScale * 0.58,
+      a: orbitScale * 1.4, 
+      b: orbitScale * 0.65,
       tilt: (-20 + (idx * 5)) * Math.PI / 180, 
       speed: speedVal,
       angle: (idx * (Math.PI * 2 / appConfigs.length)),
