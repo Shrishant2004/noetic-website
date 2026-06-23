@@ -3412,3 +3412,126 @@ html.no-snap {
     height: 320px !important;
   }
 }
+
+/* ==========================================================================
+   EXPERIMENTAL SHOWCASE DESIGN UPDATES (Suggestions 2 & 3)
+   ========================================================================== */
+
+/* Showcase Floating Cards (Suggestion 2 for Grammar Fix) */
+.showcase-floating-card {
+  position: absolute;
+  width: 170px;
+  background: rgba(10, 10, 20, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 12px 14px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-grammar-draft {
+  left: -200px;
+  top: 140px;
+  transform: translateX(-40px) translateY(10px) rotate(-6deg);
+}
+
+.card-grammar-stats {
+  right: -200px;
+  top: 340px;
+  transform: translateX(40px) translateY(-10px) rotate(6deg);
+}
+
+/* Active transitions */
+.showcase-iframe[data-feature="grammar"].active ~ .card-grammar-draft {
+  opacity: 1;
+  transform: translateX(0) translateY(0) rotate(-6deg);
+}
+
+.showcase-iframe[data-feature="grammar"].active ~ .card-grammar-stats {
+  opacity: 1;
+  transform: translateX(0) translateY(0) rotate(6deg);
+}
+
+/* Floating card inner elements */
+.showcase-floating-card .card-tag {
+  display: inline-block;
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.showcase-floating-card .card-icon {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.showcase-floating-card .card-title {
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.showcase-floating-card .card-content {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
+}
+
+.showcase-floating-card .error-word {
+  color: #ff453a;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 69, 58, 0.5);
+  font-weight: 600;
+}
+
+/* Tone Section Overrides (Suggestion 3 for Tone Rewrite) */
+#feature-tone .feat-h3 {
+  background: linear-gradient(135deg, #FFFFFF 30%, #AF52DE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#feature-tone .feat-list {
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+
+#feature-tone .feat-list li {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 14px 18px;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06); /* override default bottom border */
+}
+
+#feature-tone .feat-list li:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(175, 82, 222, 0.3);
+  transform: translateY(-2px);
+}
+
+#feature-tone .feat-list li::before {
+  background-color: rgba(175, 82, 222, 0.12);
+  border: 1px solid rgba(175, 82, 222, 0.28);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='7' viewBox='0 0 9 7'%3E%3Cpath d='M1 3.5L3.5 6L8 1' stroke='%23AF52DE' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* Hide floating cards on mobile viewports */
+@media (max-width: 960px) {
+  .showcase-floating-card {
+    display: none !important;
+  }
+}
