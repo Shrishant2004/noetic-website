@@ -714,24 +714,19 @@ function startWordSwap() {
 // 5.5. PLAN SELECTION ENGINE
 // ─────────────────────────────────────────────────────────────────────────
 function selectPlan(plan) {
+  const control = document.querySelector('.ios-segmented-control');
+  if (control) {
+    control.setAttribute('data-active', plan);
+  }
+
   const buttons = document.querySelectorAll('.ios-segment-btn');
-  let activeBtn = null;
-  
   buttons.forEach(btn => {
     if (btn.getAttribute('data-plan') === plan) {
       btn.classList.add('active');
-      activeBtn = btn;
     } else {
       btn.classList.remove('active');
     }
   });
-
-  // Smoothly transition the segment slider backdrop using transform to prevent layout recalculations
-  const slider = document.querySelector('.ios-segment-slider');
-  if (slider && activeBtn) {
-    slider.style.width = `${activeBtn.offsetWidth}px`;
-    slider.style.transform = `translateX(${activeBtn.offsetLeft - 4}px)`;
-  }
 
   const displayPrice = document.getElementById('display-price');
   const displayStrikePrice = document.getElementById('display-strike-price');
@@ -741,42 +736,60 @@ function selectPlan(plan) {
 
   if (!displayPrice || !displayPeriod || !displaySavings || !planTag) return;
 
-  if (plan === 'weekly') {
-    displayPrice.textContent = '₹49';
-    if (displayStrikePrice) {
-      displayStrikePrice.style.display = 'none';
+  // Gather elements to transition smoothly
+  const animElements = [displayPrice, displayStrikePrice, displayPeriod, displaySavings, planTag].filter(Boolean);
+
+  animElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(4px)';
+    el.style.transition = 'opacity 0.12s ease, transform 0.12s ease';
+  });
+
+  setTimeout(() => {
+    if (plan === 'weekly') {
+      displayPrice.textContent = '₹49';
+      if (displayStrikePrice) {
+        displayStrikePrice.style.display = 'none';
+      }
+      displayPeriod.textContent = '/ week';
+      displaySavings.textContent = 'Flexible weekly billing';
+      planTag.textContent = 'Basic';
+      planTag.style.background = 'rgba(0,122,255,0.15)';
+      planTag.style.color = 'var(--blue)';
+      planTag.style.borderColor = 'rgba(0,122,255,0.3)';
+    } else if (plan === 'monthly') {
+      displayPrice.textContent = '₹99';
+      if (displayStrikePrice) {
+        displayStrikePrice.textContent = '₹200';
+        displayStrikePrice.style.display = 'inline-block';
+      }
+      displayPeriod.textContent = '/ month';
+      displaySavings.textContent = 'Save 50% compared to weekly';
+      planTag.textContent = 'Most Popular';
+      planTag.style.background = 'rgba(255,176,32,0.15)';
+      planTag.style.color = 'var(--gold)';
+      planTag.style.borderColor = 'rgba(255,176,32,0.3)';
+    } else if (plan === 'yearly') {
+      displayPrice.textContent = '₹999';
+      if (displayStrikePrice) {
+        displayStrikePrice.textContent = '₹1,188';
+        displayStrikePrice.style.display = 'inline-block';
+      }
+      displayPeriod.textContent = '/year';
+      displaySavings.textContent = 'Save 16% compared to monthly';
+      planTag.textContent = 'Best Value';
+      planTag.style.background = 'rgba(139, 92, 246, 0.15)';
+      planTag.style.color = 'var(--violet)';
+      planTag.style.borderColor = 'rgba(139, 92, 246, 0.3)';
     }
-    displayPeriod.textContent = '/ week';
-    displaySavings.textContent = 'Flexible weekly billing';
-    planTag.textContent = 'Basic';
-    planTag.style.background = 'rgba(0,122,255,0.15)';
-    planTag.style.color = 'var(--blue)';
-    planTag.style.borderColor = 'rgba(0,122,255,0.3)';
-  } else if (plan === 'monthly') {
-    displayPrice.textContent = '₹99';
-    if (displayStrikePrice) {
-      displayStrikePrice.textContent = '₹200';
-      displayStrikePrice.style.display = 'inline-block';
-    }
-    displayPeriod.textContent = '/ month';
-    displaySavings.textContent = 'Save 50% compared to weekly';
-    planTag.textContent = 'Most Popular';
-    planTag.style.background = 'rgba(255,176,32,0.15)';
-    planTag.style.color = 'var(--gold)';
-    planTag.style.borderColor = 'rgba(255,176,32,0.3)';
-  } else if (plan === 'yearly') {
-    displayPrice.textContent = '₹999';
-    if (displayStrikePrice) {
-      displayStrikePrice.textContent = '₹1,188';
-      displayStrikePrice.style.display = 'inline-block';
-    }
-    displayPeriod.textContent = '/year';
-    displaySavings.textContent = 'Save 16% compared to monthly';
-    planTag.textContent = 'Best Value';
-    planTag.style.background = 'rgba(139, 92, 246, 0.15)';
-    planTag.style.color = 'var(--violet)';
-    planTag.style.borderColor = 'rgba(139, 92, 246, 0.3)';
-  }
+
+    animElements.forEach(el => {
+      // Force layout calculation locally for clean transition start
+      void el.offsetHeight;
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    });
+  }, 120);
 }
 
 function setupDropdownToggles() {

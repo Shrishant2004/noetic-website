@@ -629,14 +629,14 @@ a:hover {
 }
 
 .ios-segmented-control {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 99px;
   padding: 4px;
-  width: fit-content;
+  width: 320px;
   position: relative;
-  gap: 0;
 }
 
 .ios-segment-btn {
@@ -646,14 +646,14 @@ a:hover {
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
-  padding: 0.6rem 1.8rem;
+  padding: 0.6rem 0;
+  text-align: center;
   border-radius: 99px;
   cursor: pointer;
   outline: none;
   z-index: 2;
   position: relative;
-  transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: color;
+  transition: color 0.2s ease;
 }
 
 .ios-segment-btn:hover {
@@ -670,13 +670,27 @@ a:hover {
   top: 4px;
   left: 4px;
   bottom: 4px;
+  width: calc((100% - 8px) / 3);
   background: rgba(255, 255, 255, 0.1);
   border-radius: 99px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   z-index: 1;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
-  will-change: transform, width;
+  will-change: transform;
+}
+
+/* Hardware accelerated sliding positions */
+.ios-segmented-control[data-active="weekly"] .ios-segment-slider {
+  transform: translateX(0);
+}
+
+.ios-segmented-control[data-active="monthly"] .ios-segment-slider {
+  transform: translateX(100%);
+}
+
+.ios-segmented-control[data-active="yearly"] .ios-segment-slider {
+  transform: translateX(200%);
 }
 
 /* Horizontal Pricing Sheet */
