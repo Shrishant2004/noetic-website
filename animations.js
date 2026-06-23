@@ -649,6 +649,53 @@ function startWordSwap() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────
+// 5.5. PLAN SELECTION ENGINE
+// ─────────────────────────────────────────────────────────────────────────
+function selectPlan(plan) {
+  const buttons = document.querySelectorAll('.ios-segment-btn');
+  buttons.forEach(btn => {
+    if (btn.getAttribute('data-plan') === plan) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  const displayPrice = document.getElementById('display-price');
+  const displayPeriod = document.getElementById('display-period');
+  const displaySavings = document.getElementById('display-savings');
+  const planTag = document.getElementById('plan-tag');
+
+  if (!displayPrice || !displayPeriod || !displaySavings || !planTag) return;
+
+  if (plan === 'weekly') {
+    displayPrice.textContent = '₹49';
+    displayPeriod.textContent = '/ week';
+    displaySavings.textContent = 'Flexible weekly billing';
+    planTag.textContent = 'Basic';
+    planTag.style.background = 'rgba(0,122,255,0.15)';
+    planTag.style.color = 'var(--blue)';
+    planTag.style.borderColor = 'rgba(0,122,255,0.3)';
+  } else if (plan === 'monthly') {
+    displayPrice.textContent = '₹99';
+    displayPeriod.textContent = '/ month';
+    displaySavings.textContent = 'Save 50% compared to weekly';
+    planTag.textContent = 'Most Popular';
+    planTag.style.background = 'rgba(255,176,32,0.15)';
+    planTag.style.color = 'var(--gold)';
+    planTag.style.borderColor = 'rgba(255,176,32,0.3)';
+  } else if (plan === 'yearly') {
+    displayPrice.textContent = '₹999';
+    displayPeriod.textContent = '/ year';
+    displaySavings.textContent = 'Save 60% compared to monthly';
+    planTag.textContent = 'Best Value';
+    planTag.style.background = 'rgba(139, 92, 246, 0.15)';
+    planTag.style.color = 'var(--violet)';
+    planTag.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────
 // 6. RUNTIME DOCUMENT INIT INITIALIZER
 // ─────────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {

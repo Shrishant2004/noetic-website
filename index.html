@@ -118,12 +118,6 @@
         </div>
       </div>
     </div>
-    
-    <!-- Premium Scroll Indicator -->
-    <div class="hero-scroll-indicator" onclick="document.querySelector('#features-showcase').scrollIntoView({behavior:'smooth'});">
-      <span class="scroll-label">SCROLL TO EXPLORE</span>
-      <div class="scroll-line"></div>
-    </div>
   </section>
 
   <div class="pinned-showcase-container" id="features-showcase">
@@ -349,54 +343,57 @@
 
   <section class="section continuous-section" id="pricing" style="background: var(--bg-alt); padding: 5rem 0;">
     <div class="container reveal">
-      <h2 style="text-align: center; margin-bottom: 0.5rem;">Start free. Upgrade when ready.</h2>
-      <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">No credit card required for free tier.</p>
+      <h2 style="text-align: center; margin-bottom: 0.5rem;">Unlock Premium. Write Without Limits.</h2>
+      <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Choose the plan that fits your workflow.</p>
       
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-        <!-- Free Tier Card -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <div class="pricing-chip blue">FREE TIER</div>
+      <div class="pricing-section-container">
+        <!-- iOS Segmented Control (hstack) -->
+        <div class="pricing-selector-container">
+          <div class="ios-segmented-control">
+            <button class="ios-segment-btn" data-plan="weekly" onclick="selectPlan('weekly')">Weekly</button>
+            <button class="ios-segment-btn active" data-plan="monthly" onclick="selectPlan('monthly')">Monthly</button>
+            <button class="ios-segment-btn" data-plan="yearly" onclick="selectPlan('yearly')">Yearly</button>
           </div>
-          <div class="pricing-price">₹0</div>
-          <div class="pricing-subtext">forever</div>
-          <ul class="pricing-features">
-            <li>50 free credits on install</li>
-            <li>100 credits refresh daily at midnight</li>
-            <li>Access to all 5 AI tools</li>
-            <li>Translate in 41 supported languages</li>
-            <li>Earn extra credits by watching optional ads</li>
-          </ul>
-          <button class="btn btn-primary pricing-cta" onclick="window.location.href='#'">Download Free</button>
-          <p style="text-align: center; font-size: 12px; color: var(--text-tertiary); margin-top: 1rem;">No account required to start</p>
         </div>
-        
-        <!-- Premium Tier Card -->
-        <div class="pricing-card pricing-popular pricing-premium">
-          <div class="pricing-header">
-            <div class="pricing-chip badge-popular gold">PREMIUM</div>
+
+        <!-- Horizontal Pricing Sheet -->
+        <div class="premium-horizontal-sheet">
+          <div class="pricing-sheet-left">
+            <div class="pricing-sheet-badge-row">
+              <span class="pricing-sheet-badge">Premium</span>
+              <span class="pricing-sheet-tag" id="plan-tag">Most Popular</span>
+            </div>
+            
+            <div class="price-display-wrapper">
+              <div class="price-display-amount">
+                <span id="display-price">₹99</span>
+                <span class="price-display-period" id="display-period">/ month</span>
+              </div>
+              <div class="price-savings-alert" id="display-savings">Save 50% compared to weekly</div>
+            </div>
+            
+            <p class="pricing-sheet-desc">
+              Unlock the full power of Noetic. Write, rewrite, translate, and correct grammar instantly in all your favorite apps.
+            </p>
+            
+            <button class="btn btn-primary pricing-cta" onclick="window.location.href='#'" style="width: 100%;">Unlock Premium</button>
           </div>
-          <div class="pricing-price">₹99<span style="font-size: 1.2rem; font-weight: 500; color: var(--text-secondary);">/month</span></div>
-          <div class="pricing-subtext" style="margin-bottom: 0.5rem;">or choose weekly / yearly plans</div>
-          <div style="display: inline-block; background: rgba(255,176,32,0.15); border-radius: 4px; padding: 0.25rem 0.75rem; font-size: 12px; color: var(--gold); margin-bottom: 1.5rem; font-weight: 600;">Save up to 60% with yearly</div>
-          <ul class="pricing-features">
-            <li><strong>Unlimited</strong> corrections (No credit limit)</li>
-            <li>Access to all 5 AI tools & 41 languages</li>
-            <li>Create & customize your own writing tones</li>
-            <li>Priority AI processing speed</li>
-            <li>Fully ad-free experience</li>
-            <li style="border-top: 1px dashed var(--border); margin-top: 8px; padding-top: 8px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px;">
-              <span style="font-size: 11px; font-weight: bold; color: var(--text-primary);">Flex Pricing Options:</span>
-              <span style="font-size: 12px;">• <strong>Weekly:</strong> ₹49 / week</span>
-              <span style="font-size: 12px;">• <strong>Monthly:</strong> ₹99 / month <span style="color: var(--gold); font-size: 10px; font-weight: bold;">(Save 50%)</span></span>
-              <span style="font-size: 12px;">• <strong>Yearly:</strong> ₹999 / year <span style="color: var(--gold); font-size: 10px; font-weight: bold;">(Save 60%)</span></span>
-            </li>
-          </ul>
-          <button class="btn btn-primary pricing-cta" onclick="window.location.href='#'">Unlock Premium</button>
+          
+          <div class="pricing-sheet-right">
+            <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">All Premium Features Included</h3>
+            <ul class="pricing-sheet-features-list">
+              <li><strong>Unlimited</strong> corrections (No credit limit)</li>
+              <li>Access to all 5 AI tools & 41 languages</li>
+              <li>Create & customize your own writing tones</li>
+              <li>Priority AI processing speed</li>
+              <li>Works seamlessly in every keyboard-enabled app</li>
+            </ul>
+            <p style="font-size: 12px; color: var(--text-tertiary); text-align: center; margin: 0;">Cancel anytime in App Store settings</p>
+          </div>
         </div>
       </div>
       
-      <div style="text-align: center; background: var(--surface); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+      <div style="text-align: center; background: var(--surface); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border); margin-top: 2rem;">
         <p style="font-size: 13px; color: var(--text-secondary);">Pricing shown in Indian Rupees. Available via in-app purchase on the App Store.</p>
       </div>
     </div>
