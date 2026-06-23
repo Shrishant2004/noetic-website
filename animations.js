@@ -225,7 +225,7 @@ function setupParticleWaveCanvas() {
     
     // Smooth stellar generation tracking mapping
     stars = [];
-    for (let i = 0; i < 95; i++) {
+    for (let i = 0; i < 20; i++) {
       stars.push({
         x: Math.random() * cssWidth,
         y: Math.random() * cssHeight,
@@ -245,6 +245,8 @@ function setupParticleWaveCanvas() {
     targetAppInstance = apps[Math.floor(Math.random() * apps.length)];
     targetToolInstance = toolsConfig[Math.floor(Math.random() * toolsConfig.length)];
     targetAppInstance.state = 'attracting';
+    targetAppInstance.startX = targetAppInstance.x;
+    targetAppInstance.startY = targetAppInstance.y;
     targetAppInstance.transProgress = 0;
   }
 
@@ -388,8 +390,8 @@ function setupParticleWaveCanvas() {
         const t = Math.min(app.transProgress, 1.0);
         const ease = t * t * (3 - 2 * t);
         
-        app.x = app.x + (cx - app.x) * ease;
-        app.y = app.y + (cy - app.y) * ease;
+        app.x = app.startX + (cx - app.startX) * ease;
+        app.y = app.startY + (cy - app.startY) * ease;
 
         ctx.beginPath();
         ctx.moveTo(app.x, app.y);
@@ -448,7 +450,7 @@ function setupParticleWaveCanvas() {
       const depthRatio = app.state === 'orbiting' ? Math.sin(app.angle) : 0;
       const zScale = 0.75 + (depthRatio * 0.25); // Range: 0.5 to 1.0
       const currentSize = app.size * zScale;
-      const currentOpacity = 0.4 + (depthRatio * 0.6); // Range: 0.4 to 1.0
+      const currentOpacity = 0.725 + (depthRatio * 0.275); // Range: 0.45 to 1.0
       
       ctx.globalAlpha = app.state === 'orbiting' ? currentOpacity : 1.0;
       
@@ -466,21 +468,14 @@ function setupParticleWaveCanvas() {
       }
       
       try {
-        if (app.img.complete && app.img.naturalWidth !== 0) {
-          ctx.drawImage(app.img, app.x - currentSize / 2, app.y - currentSize / 2, currentSize, currentSize);
-        } else {
-          ctx.beginPath();
-          ctx.arc(app.x, app.y, currentSize / 2 - 2, 0, Math.PI * 2);
-          ctx.fillStyle = app.baseColor;
-          ctx.fill();
-          ctx.strokeStyle = 'rgba(255,255,255,0.1)';
-          ctx.stroke();
-        }
+        ctx.drawImage(app.img, app.x - currentSize / 2, app.y - currentSize / 2, currentSize, currentSize);
       } catch(e) {
         ctx.beginPath();
         ctx.arc(app.x, app.y, currentSize / 2 - 2, 0, Math.PI * 2);
         ctx.fillStyle = app.baseColor;
         ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+        ctx.stroke();
       }
       ctx.restore();
     });
@@ -597,20 +592,35 @@ function setupPricingHover() {
 
 // Global Core Integration Map for Deep Snapping Target Jumps
 function setupSnapDeepLinking() {
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
+  document.querySelectorAll('a[href*="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
+      const href = link.getAttribute('href');
+      const hashIndex = href.indexOf('#');
+      if (hashIndex === -1) return;
+      
+      const targetId = href.substring(hashIndex);
       if (targetId === '#') return;
       
-      const targetElement = document.querySelector(targetId);
-      if (!targetElement) return;
-
-      e.preventDefault();
-
-      targetElement.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start' 
-      });
+      const path = href.substring(0, hashIndex);
+      const isHomepage = path === '' || path === '/' || path === '/index.html';
+      
+      // Normalize pathname
+      let currentPath = window.location.pathname;
+      if (currentPath.endsWith('/')) {
+        currentPath = currentPath + 'index.html';
+      }
+      const isCurrentlyHomepage = currentPath === '/index.html' || currentPath === '/' || currentPath === '';
+      
+      if (isHomepage && isCurrentlyHomepage) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }
+      }
     });
   });
 }
@@ -780,4 +790,18 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Launch word swap cycle
   startWordSwap();
+
+  // Handle deep links from subpages on load
+  if (window.location.hash) {
+    const hash = window.location.hash;
+    setTimeout(() => {
+      const targetElement = document.querySelector(hash);
+      if (targetElement) {
+        targetElement.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }
+    }, 400);
+  }
 });

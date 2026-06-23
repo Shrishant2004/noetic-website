@@ -31,7 +31,36 @@
     </div>
     
     <ul class="nav-links">
-      <li><a href="/#features">Features</a></li>
+      <li class="nav-dropdown-wrapper">
+        <a class="nav-dropdown-toggle">Features <span class="chevron">▼</span></a>
+        <div class="nav-dropdown-menu">
+          <a href="/#feature-grammar" class="dropdown-item">
+            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            <span class="dropdown-dot">•</span>
+            <span class="dropdown-label">Grammar Fix</span>
+          </a>
+          <a href="/#feature-tone" class="dropdown-item">
+            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+            <span class="dropdown-dot">•</span>
+            <span class="dropdown-label">Tone Rewrite</span>
+          </a>
+          <a href="/#feature-assist" class="dropdown-item">
+            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4V2"></path><path d="M15 16v-2"></path><path d="M8 9h2"></path><path d="M20 9h2"></path><path d="M17.8 5.2l-1.4 1.4"></path><path d="M13.6 9.4l-1.4 1.4"></path><path d="M17.8 12.8l-1.4-1.4"></path><path d="M13.6 8.6l-1.4-1.4"></path><path d="M18 9l-4.5 4.5"></path><path d="M13 14l-6 6"></path></svg>
+            <span class="dropdown-dot">•</span>
+            <span class="dropdown-label">AI Assist</span>
+          </a>
+          <a href="/#feature-summarize" class="dropdown-item">
+            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+            <span class="dropdown-dot">•</span>
+            <span class="dropdown-label">Summarize</span>
+          </a>
+          <a href="/#feature-translate" class="dropdown-item">
+            <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <span class="dropdown-dot">•</span>
+            <span class="dropdown-label">Translate</span>
+          </a>
+        </div>
+      </li>
       <li><a href="pricing" class="active-nav-link">Pricing</a></li>
       <li class="nav-dropdown-wrapper">
         <a class="nav-dropdown-toggle">Company <span class="chevron">▼</span></a>
@@ -77,6 +106,11 @@
   <div class="nav-mobile" id="nav-mobile">
     <ul>
       <li><a href="/#features">Features</a></li>
+      <li class="mobile-sub-link"><a href="/#feature-grammar">• Grammar Fix</a></li>
+      <li class="mobile-sub-link"><a href="/#feature-tone">• Tone Rewrite</a></li>
+      <li class="mobile-sub-link"><a href="/#feature-assist">• AI Assist</a></li>
+      <li class="mobile-sub-link"><a href="/#feature-summarize">• Summarize</a></li>
+      <li class="mobile-sub-link"><a href="/#feature-translate">• Translate</a></li>
       <li><a href="pricing">Pricing</a></li>
       <li style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; margin-top: 10px; font-weight: bold; color: var(--text-tertiary); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase;">Company</li>
       <li><a href="about">About</a></li>
