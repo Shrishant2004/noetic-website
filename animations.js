@@ -225,13 +225,15 @@ function setupParticleWaveCanvas() {
     
     // Smooth stellar generation tracking mapping
     stars = [];
-    for (let i = 0; i < 90; i++) {
+    for (let i = 0; i < 95; i++) {
       stars.push({
         x: Math.random() * cssWidth,
         y: Math.random() * cssHeight,
-        size: Math.random() * 0.9 + 0.3,
-        alpha: Math.random() * 0.3 + 0.1,
-        speed: Math.random() * 0.015 + 0.005
+        size: Math.random() * 1.3 + 0.4,
+        alpha: Math.random() * 0.45 + 0.15,
+        speed: Math.random() * 0.02 + 0.005,
+        twinkleSpeed: Math.random() * 3.5 + 1,
+        color: Math.random() > 0.8 ? (Math.random() > 0.5 ? '#A855F7' : '#007AFF') : '#FFFFFF'
       });
     }
   }
@@ -287,12 +289,20 @@ function setupParticleWaveCanvas() {
     const cy = cssHeight / 2; 
 
     // 1. Cosmic Background Star System
-    ctx.fillStyle = '#FFFFFF';
+    // 1. Cosmic Background Star System
     stars.forEach(star => {
       star.y -= star.speed;
-      if (star.y < 0) star.y = cssHeight;
-      ctx.globalAlpha = star.alpha;
-      ctx.fillRect(star.x, star.y, star.size, star.size);
+      if (star.y < 0) {
+        star.y = cssHeight;
+        star.x = Math.random() * cssWidth;
+      }
+      ctx.save();
+      ctx.fillStyle = star.color;
+      ctx.globalAlpha = star.alpha * (0.7 + Math.sin(timestamp * 0.001 * star.twinkleSpeed) * 0.3);
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
     });
     ctx.globalAlpha = 1.0;
 
@@ -351,7 +361,15 @@ function setupParticleWaveCanvas() {
         app.x = cx + (rawX * Math.cos(app.tilt) - rawY * Math.sin(app.tilt));
         app.y = cy + (rawX * Math.sin(app.tilt) + rawY * Math.cos(app.tilt));
         
-        // Render crisp geometry guides
+        // Render crisp geometry guides with gradient tracks
+        ctx.save();
+        const orbitGrad = ctx.createLinearGradient(cx - calcA, cy - calcB, cx + calcA, cy + calcB);
+        orbitGrad.addColorStop(0, 'rgba(255, 255, 255, 0.01)');
+        orbitGrad.addColorStop(0.5, app.baseColor + '22');
+        orbitGrad.addColorStop(1, 'rgba(255, 255, 255, 0.01)');
+        ctx.strokeStyle = orbitGrad;
+        ctx.lineWidth = 1;
+        
         ctx.beginPath();
         for (let t = 0; t < Math.PI * 2; t += 0.08) {
           const tx = calcA * Math.cos(t);
@@ -361,8 +379,9 @@ function setupParticleWaveCanvas() {
             cy + (tx * Math.sin(app.tilt) + ty * Math.cos(app.tilt))
           );
         }
-        ctx.strokeStyle = app.baseColor + '22';
+        ctx.closePath();
         ctx.stroke();
+        ctx.restore();
 
       } else if (app.state === 'attracting') {
         app.transProgress += 0.03;
@@ -424,17 +443,34 @@ function setupParticleWaveCanvas() {
 
       // 6. Alpha-Blended Graphic Blitting Pipeline
       ctx.save();
+      
+      // Calculate 3D perspective scale based on position (depth)
+      const depthRatio = app.state === 'orbiting' ? Math.sin(app.angle) : 0;
+      const zScale = 0.75 + (depthRatio * 0.25); // Range: 0.5 to 1.0
+      const currentSize = app.size * zScale;
+      const currentOpacity = 0.4 + (depthRatio * 0.6); // Range: 0.4 to 1.0
+      
+      ctx.globalAlpha = app.state === 'orbiting' ? currentOpacity : 1.0;
+      
+      // Render soft canvas dropshadow offsets beneath active orbiting app logos
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
+      ctx.shadowBlur = 6;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 5 * zScale;
+      
       if (app.hovered || app.state === 'processing') {
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 15;
         ctx.shadowColor = app.baseColor;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 2;
       }
       
       try {
         if (app.img.complete && app.img.naturalWidth !== 0) {
-          ctx.drawImage(app.img, app.x - app.size / 2, app.y - app.size / 2, app.size, app.size);
+          ctx.drawImage(app.img, app.x - currentSize / 2, app.y - currentSize / 2, currentSize, currentSize);
         } else {
           ctx.beginPath();
-          ctx.arc(app.x, app.y, app.size / 2 - 2, 0, Math.PI * 2);
+          ctx.arc(app.x, app.y, currentSize / 2 - 2, 0, Math.PI * 2);
           ctx.fillStyle = app.baseColor;
           ctx.fill();
           ctx.strokeStyle = 'rgba(255,255,255,0.1)';
@@ -442,7 +478,7 @@ function setupParticleWaveCanvas() {
         }
       } catch(e) {
         ctx.beginPath();
-        ctx.arc(app.x, app.y, app.size / 2 - 2, 0, Math.PI * 2);
+        ctx.arc(app.x, app.y, currentSize / 2 - 2, 0, Math.PI * 2);
         ctx.fillStyle = app.baseColor;
         ctx.fill();
       }
