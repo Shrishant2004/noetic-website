@@ -3593,6 +3593,13 @@ html.no-snap {
   margin-bottom: 4px;
 }
 
+.showcase-floating-card .card-logo-icon {
+  width: 14px;
+  height: 14px;
+  margin-bottom: 6px;
+  display: block;
+}
+
 .showcase-floating-card .card-title {
   font-size: 11px;
   font-weight: bold;
