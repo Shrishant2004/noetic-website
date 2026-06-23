@@ -3132,7 +3132,7 @@ html {
   justify-content: center;
   z-index: 10;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .showcase-scroll-column {
@@ -3435,13 +3435,13 @@ html.no-snap {
 }
 
 .card-grammar-draft {
-  left: -200px;
+  left: -180px;
   top: 140px;
   transform: translateX(-40px) translateY(10px) rotate(-6deg);
 }
 
 .card-grammar-stats {
-  right: -200px;
+  right: -180px;
   top: 340px;
   transform: translateX(40px) translateY(-10px) rotate(6deg);
 }
