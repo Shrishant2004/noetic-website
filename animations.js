@@ -661,37 +661,44 @@ function startWordSwap() {
   const swapSpan = document.getElementById('word-swap');
   if (!swapSpan) return;
 
-  const appIcons = [
-    // WhatsApp (Green bubble)
-    `<svg class="swap-icon" viewBox="0 0 24 24" width="36" height="36" fill="#25D366" style="display:inline-block; vertical-align:middle; margin-left:4px;"><path d="M12.004 2C6.48 2 2 6.48 2 12c0 2.186.702 4.205 1.895 5.85L2.05 22l4.316-1.133A9.957 9.957 0 0012.004 22c5.522 0 10.002-4.48 10.002-10S17.526 2 12.004 2zm0 18.286c-1.857 0-3.593-.493-5.097-1.353l-.366-.21-2.54.667.678-2.474-.23-.37a8.232 8.232 0 01-1.26-4.346c0-4.568 3.717-8.286 8.285-8.286 4.57 0 8.287 3.718 8.287 8.286 0 4.568-3.717 8.286-8.287 8.286z"/></svg>`,
-    // Notion (White N on black)
-    `<svg class="swap-icon" viewBox="0 0 24 24" width="36" height="36" fill="#FFFFFF" style="display:inline-block; vertical-align:middle; background:#000; border-radius:6px; padding:2px; margin-left:4px;"><path d="M4 2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2zm2.667 3.333v13.334H8l6.333-8.667v8.667h2.667V5.333H14.5L8.167 14V5.333H6.667z"/></svg>`,
-    // Gmail (Red M)
-    `<svg class="swap-icon" viewBox="0 0 24 24" width="36" height="36" fill="#EA4335" style="display:inline-block; vertical-align:middle; margin-left:4px;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>`,
-    // X (Twitter X)
-    `<svg class="swap-icon" viewBox="0 0 24 24" width="36" height="36" fill="#FFFFFF" style="display:inline-block; vertical-align:middle; margin-left:4px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
-    // Notes (Yellow page)
-    `<svg class="swap-icon" viewBox="0 0 24 24" width="36" height="36" fill="#FFB020" style="display:inline-block; vertical-align:middle; margin-left:4px;"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>`
+  // Correct apps: Instagram, Gmail, WhatsApp, LinkedIn, Messages
+  const appAssets = [
+    'assets/apps/instagram.svg',
+    'assets/apps/gmail.svg',
+    'assets/apps/whatsapp.svg',
+    'assets/apps/linkedin.svg',
+    'assets/apps/messages.svg'
   ];
 
-  let currentIdx = 0;
-  
+  // Preload all icons immediately
+  appAssets.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+
+  // Cycle: app. → icon1 → icon2 → ... → icon5 → app. → repeat
+  let currentIdx = 0; // 0 = "app.", 1-5 = icons
+  const totalStates = appAssets.length + 1; // 6 states
+
   setInterval(() => {
     swapSpan.style.opacity = '0';
-    swapSpan.style.transform = 'translateY(-10px)';
-    
+    swapSpan.style.transform = 'translateY(-8px)';
+    swapSpan.style.filter = 'blur(4px)';
+
     setTimeout(() => {
-      if (currentIdx === appIcons.length) {
+      currentIdx = (currentIdx + 1) % totalStates;
+
+      if (currentIdx === 0) {
         swapSpan.innerHTML = 'app.';
-        currentIdx = 0;
       } else {
-        swapSpan.innerHTML = appIcons[currentIdx];
-        currentIdx++;
+        swapSpan.innerHTML = `<img src="${appAssets[currentIdx - 1]}" alt="" class="swap-icon">`;
       }
+
       swapSpan.style.opacity = '1';
       swapSpan.style.transform = 'translateY(0)';
-    }, 300);
-  }, 3000);
+      swapSpan.style.filter = 'blur(0)';
+    }, 200);
+  }, 2000);
 }
 
 // ─────────────────────────────────────────────────────────────────────────

@@ -123,6 +123,7 @@
 <div class="snap-presentation-cylinder">
 
   <section class="section-hero">
+    <div class="hero-mesh-gradient"></div>
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
@@ -139,7 +140,7 @@
       
       <!-- Headline -->
       <h1 class="hero-headline">
-        Write beyond words.<br>
+        Write <span class="hero-headline-accent">beyond words.</span><br>
         In any <span id="word-swap">app.</span>
       </h1>
       
@@ -154,17 +155,24 @@
           <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
         </a>
         <button class="btn btn-secondary" onclick="document.querySelector('#features').scrollIntoView({behavior: 'smooth'});">
-          See how it works ↓
+          See how it works <span class="arrow-bounce">↓</span>
         </button>
       </div>
       
       <!-- Bottom Metadata Links -->
       <div class="hero-meta">
-        <span>Free to start</span>
-        <span>•</span>
-        <span>No keystroke logging</span>
-        <span>•</span>
-        <span>Works in every app</span>
+        <span class="hero-meta-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          Free to start
+        </span>
+        <span class="hero-meta-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          No keystroke logging
+        </span>
+        <span class="hero-meta-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          Works in every app
+        </span>
       </div>
       
     </div>
