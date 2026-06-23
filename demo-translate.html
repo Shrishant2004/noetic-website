@@ -650,6 +650,46 @@
             margin: 0 2px;
         }
 
+        /* Translate Preview Card */
+        .translate-preview-card {
+            padding: 6px 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 6px;
+            border: 0.5px solid rgba(255, 255, 255, 0.06);
+            margin: 4px 2px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .translate-preview-header {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .translate-preview-header span {
+            font-size: 8px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.35);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .translate-preview-text {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-break: break-word;
+            text-align: left;
+            height: 48px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
         .language-info {
             display: flex;
             flex-direction: column;
@@ -968,6 +1008,13 @@
                                     <span>Change</span>
                                 </div>
                             </div>
+                            <div class="translate-preview-card">
+                                <div class="translate-preview-header">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255,255,255,0.4);"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    <span>Text to translate:</span>
+                                </div>
+                                <div class="translate-preview-text">"Salut! J'espère que tu vas bien. Notre réunion a été déplacée à ce soir à cause de..."</div>
+                            </div>
                             <!-- Language Menu Dropdown -->
                             <div class="language-menu" id="languageMenu">
                                 <div class="language-menu-header">Select Language</div>
@@ -1206,6 +1253,13 @@
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/></svg>
                         <span>Change</span>
                     </div>
+                </div>
+                <div class="translate-preview-card">
+                    <div class="translate-preview-header">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: rgba(255,255,255,0.4);"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span>Text to translate:</span>
+                    </div>
+                    <div class="translate-preview-text">"Salut! J'espère que tu vas bien. Notre réunion a été déplacée à ce soir à cause de..."</div>
                 </div>
                 <div class="language-menu" id="languageMenu">
                     <div class="language-menu-header">Select Language</div>
