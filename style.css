@@ -3555,39 +3555,40 @@ html {
 
 @media (max-width: 767px) {
   .pinned-showcase-container {
-    display: block !important;
+    display: flex !important;
+    flex-direction: row !important;
     position: relative;
     width: 100% !important;
   }
 
   .showcase-sticky-panel {
-    position: fixed !important;
+    position: sticky !important;
     top: 0 !important;
-    right: 0 !important;
-    width: 140px !important;
+    align-self: flex-start !important;
+    width: 130px !important;
     height: 100vh !important;
     align-items: center !important;
     justify-content: flex-end !important;
     pointer-events: none !important;
     z-index: 10 !important;
-    padding-right: 0px !important;
     background: transparent !important;
+    overflow: visible !important;
   }
 
   .showcase-sticky-panel .premium-glass-frame-wrap {
-    transform: scale(0.5) !important;
+    transform: scale(0.48) !important;
     transform-origin: right center !important;
-    margin-right: -25px !important; /* lets the phone stick out slightly from the right edge */
+    margin-right: -28px !important; /* lets the phone stick out slightly from the right edge */
   }
 
   .showcase-scroll-column {
-    width: 100% !important;
+    width: calc(100% - 130px) !important;
   }
 
   .showcase-text-block {
     height: 100vh !important;
     min-height: 100vh !important;
-    padding: 2rem 140px 2rem 1.25rem !important; /* wraps the text before it reaches the phone mock */
+    padding: 2rem 0.5rem 2rem 1.25rem !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
@@ -3596,22 +3597,23 @@ html {
 
   .showcase-text-inner {
     transform: translateY(15px) !important;
+    width: 100% !important;
   }
 
   .showcase-text-inner h3 {
-    font-size: clamp(22px, 5.5vw, 28px) !important;
-    line-height: 1.2 !important;
+    font-size: clamp(20px, 5vw, 26px) !important;
+    line-height: 1.25 !important;
     margin-bottom: 0.75rem !important;
   }
 
   .showcase-text-inner p {
-    font-size: 13.5px !important;
+    font-size: 13px !important;
     line-height: 1.5 !important;
     margin-bottom: 1rem !important;
   }
 
   .showcase-text-inner .feat-list li {
-    font-size: 13px !important;
+    font-size: 12.5px !important;
     margin-bottom: 0.4rem !important;
   }
 
