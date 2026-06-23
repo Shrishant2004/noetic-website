@@ -1073,7 +1073,6 @@
         // Constants
         const DRAFT_STR = "yea sure, weather might\neffect traffic so ill let u no";
         const FIXED_STR = "Sure, the weather might\naffect traffic, so I'll let you know.";
-        const REFINED_STR = "Yes, sure. The weather might impact traffic, so I will keep you posted.";
         const ERROR_WORDS = ["effect", "ill", "no"];
         const BOSS_STR = "Can you check weather for the client visit tomorrow?";
 
@@ -1082,7 +1081,7 @@
         let currentToken = 0;
         let keyboardState = 'hidden'; // hidden, standard, noetic
         let currentInputText = "";
-        let REPLACEMENT_STR = REFINED_STR;
+        let REPLACEMENT_STR = FIXED_STR;
         let showErrors = false;
         let showBadge = false;
         let isFixed = false;
@@ -1197,7 +1196,7 @@
             tabCascadePhase = 0;
             magicParticles = [];
             fadeAll = false;
-            REPLACEMENT_STR = REFINED_STR;
+            REPLACEMENT_STR = FIXED_STR;
 
             // Reset UI — disable transitions temporarily to prevent flash during restart
             sentBubble.style.transition = 'none';
@@ -1614,88 +1613,34 @@
             badge.innerHTML = '<span><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span><span>All fixed</span>';
             
             contentCard.innerHTML = `
-                <div class="result-slider-container" style="position: relative; width: 100%; height: 100%; overflow: hidden;">
-                    <!-- Track of slides -->
-                    <div class="result-slider-track" id="sliderTrack" style="display: flex; width: 200%; height: 100%; transition: transform 0.65s cubic-bezier(0.33, 1, 0.68, 1);">
-                        <!-- Slide 1: Fixed -->
-                        <div class="result-slide" style="width: 50%; height: 100%; padding: 4px 8px; display: flex; flex-direction: column; flex-shrink: 0;">
-                            <div style="flex: 1; display: flex; flex-direction: column; padding: 4px 8px; background: rgba(255,255,255,0.04); border-radius: 6px; border: 0.5px solid rgba(255,255,255,0.08); position: relative;">
-                                <div style="position: absolute; top: 4px; right: 6px; font-size: 8px; font-weight: bold; color: rgba(255, 255, 255, 0.35); text-transform: uppercase; letter-spacing: 0.5px;">Fixed</div>
-                                <span style="font-size: 11px; font-weight: 500; color: white; line-height: 1.35; max-width: 90%;">${FIXED_STR.replace(/\n/g, ' ')}</span>
-                            </div>
-                            <div style="display: flex; gap: 4px; margin-top: 6px; align-items: center;">
-                                <div style="display: flex; gap: 3px; padding: 4px 6px; background: rgba(255,255,255,0.06); border-radius: 4px; align-items: center;">
-                                    <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" style="color: rgba(255,255,255,0.6);"><path d="M12 8V4L8 8l4 4V9c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
-                                    <span style="font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.6);">New</span>
-                                </div>
-                                <div style="flex: 1;"></div>
-                                <div id="replaceBtnFixed" style="display: flex; gap: 3px; padding: 4px 8px; background: rgba(255,255,255,0.12); border-radius: 4px; align-items: center; opacity: 0.5; cursor: default;">
-                                    <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" style="color: white;"><path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/></svg>
-                                    <span style="font-size: 8px; font-weight: 600; color: white;">Replace</span>
-                                </div>
-                                <div style="width: 18px; height: 16px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border-radius: 4px;">
-                                    <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" style="color: rgba(255,255,255,0.6);"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Slide 2: Refined -->
-                        <div class="result-slide" style="width: 50%; height: 100%; padding: 4px 8px; display: flex; flex-direction: column; flex-shrink: 0;">
-                            <div style="flex: 1; display: flex; flex-direction: column; padding: 4px 8px; background: rgba(255,255,255,0.04); border-radius: 6px; border: 0.5px solid rgba(255,255,255,0.08); position: relative;">
-                                <div style="position: absolute; top: 4px; right: 6px; font-size: 8px; font-weight: bold; color: #FFE066; text-shadow: 0 0 4px rgba(255, 224, 102, 0.4); text-transform: uppercase; letter-spacing: 0.5px;">Refined ✨</div>
-                                <span style="font-size: 11px; font-weight: 500; color: white; line-height: 1.35; max-width: 90%;">${REFINED_STR}</span>
-                            </div>
-                            <div style="display: flex; gap: 4px; margin-top: 6px; align-items: center;">
-                                <div style="display: flex; gap: 3px; padding: 4px 6px; background: rgba(255,255,255,0.06); border-radius: 4px; align-items: center;">
-                                    <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" style="color: rgba(255,255,255,0.6);"><path d="M12 8V4L8 8l4 4V9c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
-                                    <span style="font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.6);">New</span>
-                                </div>
-                                <div style="flex: 1;"></div>
-                                <div id="replaceBtn" style="display: flex; gap: 3px; padding: 4px 8px; background: rgba(255,255,255,0.12); border-radius: 4px; align-items: center; cursor: pointer; transition: transform 0.2s cubic-bezier(0.33, 1, 0.68, 1);">
-                                    <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" style="color: white;"><path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/></svg>
-                                    <span style="font-size: 8px; font-weight: 600; color: white;">Replace</span>
-                                </div>
-                                <div style="width: 18px; height: 16px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border-radius: 4px;">
-                                    <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" style="color: rgba(255,255,255,0.6);"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-                                </div>
-                            </div>
-                        </div>
+                <div style="width: 100%; height: 100%; padding: 4px 8px; display: flex; flex-direction: column;">
+                    <div style="flex: 1; display: flex; flex-direction: column; padding: 4px 8px; background: rgba(255,255,255,0.04); border-radius: 6px; border: 0.5px solid rgba(255,255,255,0.08); position: relative;">
+                        <div style="position: absolute; top: 4px; right: 6px; font-size: 8px; font-weight: bold; color: rgba(255, 255, 255, 0.35); text-transform: uppercase; letter-spacing: 0.5px;">Fixed</div>
+                        <span style="font-size: 11px; font-weight: 500; color: white; line-height: 1.35; max-width: 90%;">${FIXED_STR.replace(/\n/g, ' ')}</span>
                     </div>
-
-                    <!-- Swipe Hint Overlay -->
-                    <div id="swipeHint" class="swipe-hint" style="position: absolute; right: 10px; top: 40%; transform: translateY(-50%); display: flex; align-items: center; gap: 1px; pointer-events: none; opacity: 1; transition: opacity 0.35s;">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="chevron-pulse-1"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="chevron-pulse-2" style="margin-left: -5px;"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                    </div>
-
-                    <!-- Page indicators -->
-                    <div style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; pointer-events: none;">
-                        <div id="sliderDot1" style="width: 4px; height: 4px; border-radius: 50%; background: white; transition: background 0.3s, opacity 0.3s; opacity: 1;"></div>
-                        <div id="sliderDot2" style="width: 4px; height: 4px; border-radius: 50%; background: white; transition: background 0.3s, opacity 0.3s; opacity: 0.35;"></div>
+                    <div style="display: flex; gap: 4px; margin-top: 6px; align-items: center;">
+                        <div style="display: flex; gap: 3px; padding: 4px 6px; background: rgba(255,255,255,0.06); border-radius: 4px; align-items: center;">
+                            <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" style="color: rgba(255,255,255,0.6);"><path d="M12 8V4L8 8l4 4V9c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+                            <span style="font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.6);">New</span>
+                        </div>
+                        <div style="flex: 1;"></div>
+                        <div id="replaceBtn" style="display: flex; gap: 3px; padding: 4px 8px; background: rgba(255,255,255,0.12); border-radius: 4px; align-items: center; cursor: pointer; transition: transform 0.2s cubic-bezier(0.33, 1, 0.68, 1);">
+                            <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" style="color: white;"><path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/></svg>
+                            <span style="font-size: 8px; font-weight: 600; color: white;">Replace</span>
+                        </div>
+                        <div style="width: 18px; height: 16px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border-radius: 4px;">
+                            <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" style="color: rgba(255,255,255,0.6);"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                        </div>
                     </div>
                 </div>
             `;
 
-            // Wait 1200ms showing FIXED_STR with swipe indicator pulsing
-            await sleep(1200);
+            // Wait 1900ms showing FIXED_STR
+            await sleep(1900);
             if (cancelled()) return;
 
-            // Slide transition to REFINED_STR
-            const sliderTrack = document.getElementById('sliderTrack');
-            const swipeHint = document.getElementById('swipeHint');
-            const sliderDot1 = document.getElementById('sliderDot1');
-            const sliderDot2 = document.getElementById('sliderDot2');
-            
-            if (swipeHint) swipeHint.style.opacity = '0';
-            if (sliderTrack) sliderTrack.style.transform = 'translateX(-50%)';
-            if (sliderDot1) sliderDot1.style.opacity = '0.35';
-            if (sliderDot2) sliderDot2.style.opacity = '1';
-
-            // Wait 1200ms showing REFINED_STR
-            await sleep(1200);
-            if (cancelled()) return;
-
-            // Set replacement target to REFINED_STR
-            REPLACEMENT_STR = REFINED_STR;
+            // Set replacement target to FIXED_STR
+            REPLACEMENT_STR = FIXED_STR;
 
             // Replace button glow
             isReplaceButtonGlowing = true;
@@ -1748,7 +1693,7 @@
             sendBtnKeyboard.classList.remove('pressed');
             messageSent = true;
             currentInputText = "";
-            sentBubble.textContent = REFINED_STR;
+            sentBubble.textContent = FIXED_STR;
             updateInputText();
             showBadge = false;
             badge.classList.remove('visible');
