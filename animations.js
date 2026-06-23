@@ -193,7 +193,7 @@ function setupParticleWaveCanvas() {
     const img = new Image();
     img.src = `./assets/apps/${cfg.file}`;
     
-    const orbitScale = 0.12 + (idx * 0.026); 
+    const orbitScale = 0.135 + (idx * 0.028); 
     const speedVal = 0.0024; 
     apps.push({
       img,
@@ -225,7 +225,7 @@ function setupParticleWaveCanvas() {
     
     // Smooth stellar generation tracking mapping
     stars = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 30; i++) {
       stars.push({
         x: Math.random() * cssWidth,
         y: Math.random() * cssHeight,
