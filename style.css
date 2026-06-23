@@ -3496,38 +3496,6 @@ html.no-snap {
   font-weight: 600;
 }
 
-/* Tone Section Overrides (Suggestion 3 for Tone Rewrite) */
-#feature-tone .feat-h3 {
-  background: linear-gradient(135deg, #FFFFFF 30%, #AF52DE 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-#feature-tone .feat-list {
-  gap: 12px;
-  margin-top: 1.5rem;
-}
-
-#feature-tone .feat-list li {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
-  padding: 14px 18px;
-  transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06); /* override default bottom border */
-}
-
-#feature-tone .feat-list li:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(175, 82, 222, 0.3);
-  transform: translateY(-2px);
-}
-
-#feature-tone .feat-list li::before {
-  background-color: rgba(175, 82, 222, 0.12);
-  border: 1px solid rgba(175, 82, 222, 0.28);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='7' viewBox='0 0 9 7'%3E%3Cpath d='M1 3.5L3.5 6L8 1' stroke='%23AF52DE' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-}
 
 /* Hide floating cards on mobile viewports */
 @media (max-width: 960px) {
