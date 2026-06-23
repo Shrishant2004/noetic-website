@@ -680,27 +680,32 @@ function startWordSwap() {
   let currentIdx = 0; // 0 = "app.", 1-5 = icons
   const totalStates = appAssets.length + 1; // 6 states
 
-  setTimeout(() => {
-    setInterval(() => {
-      swapSpan.style.opacity = '0';
-      swapSpan.style.transform = 'translateY(-8px)';
-      swapSpan.style.filter = 'blur(4px)';
+  function runSwapCycle() {
+    swapSpan.style.opacity = '0';
+    swapSpan.style.transform = 'translateY(-8px)';
+    swapSpan.style.filter = 'blur(4px)';
 
-      setTimeout(() => {
-        currentIdx = (currentIdx + 1) % totalStates;
+    setTimeout(() => {
+      currentIdx = (currentIdx + 1) % totalStates;
 
-        if (currentIdx === 0) {
-          swapSpan.innerHTML = 'app.';
-        } else {
-          swapSpan.innerHTML = `<img src="${appAssets[currentIdx - 1]}" alt="" class="swap-icon">`;
-        }
+      if (currentIdx === 0) {
+        swapSpan.innerHTML = 'app.';
+      } else {
+        swapSpan.innerHTML = `<img src="${appAssets[currentIdx - 1]}" alt="" class="swap-icon">`;
+      }
 
-        swapSpan.style.opacity = '1';
-        swapSpan.style.transform = 'translateY(0)';
-        swapSpan.style.filter = 'blur(0)';
-      }, 200);
-    }, 1300);
-  }, 1000);
+      swapSpan.style.opacity = '1';
+      swapSpan.style.transform = 'translateY(0)';
+      swapSpan.style.filter = 'blur(0)';
+
+      // app. (idx 0) stays visible for 1s, icons stay visible for 1.3s
+      const nextDelay = (currentIdx === 0) ? 1000 : 1300;
+      setTimeout(runSwapCycle, nextDelay);
+    }, 200);
+  }
+
+  // Initial wait of 1 second on page load before starting the cycle
+  setTimeout(runSwapCycle, 1000);
 }
 
 // ─────────────────────────────────────────────────────────────────────────
