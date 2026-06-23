@@ -715,13 +715,23 @@ function startWordSwap() {
 // ─────────────────────────────────────────────────────────────────────────
 function selectPlan(plan) {
   const buttons = document.querySelectorAll('.ios-segment-btn');
+  let activeBtn = null;
+  
   buttons.forEach(btn => {
     if (btn.getAttribute('data-plan') === plan) {
       btn.classList.add('active');
+      activeBtn = btn;
     } else {
       btn.classList.remove('active');
     }
   });
+
+  // Smoothly transition the segment slider backdrop using transform to prevent layout recalculations
+  const slider = document.querySelector('.ios-segment-slider');
+  if (slider && activeBtn) {
+    slider.style.width = `${activeBtn.offsetWidth}px`;
+    slider.style.transform = `translateX(${activeBtn.offsetLeft - 4}px)`;
+  }
 
   const displayPrice = document.getElementById('display-price');
   const displayStrikePrice = document.getElementById('display-strike-price');
@@ -809,6 +819,13 @@ document.addEventListener('DOMContentLoaded', () => {
   setupDropdownToggles();
   setupOrbParallax();
   setupPricingHover();
+  
+  // Initialize pricing segmented slider positioning if present
+  const activePlanBtn = document.querySelector('.ios-segment-btn.active');
+  if (activePlanBtn) {
+    const initialPlan = activePlanBtn.getAttribute('data-plan');
+    selectPlan(initialPlan);
+  }
   
   // Launch Premium Core Operations Engines
   setupFeatureAnimations();
