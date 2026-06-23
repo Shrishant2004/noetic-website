@@ -695,6 +695,28 @@ function selectPlan(plan) {
   }
 }
 
+function setupDropdownToggles() {
+  document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const wrapper = toggle.closest('.nav-dropdown-wrapper');
+      if (wrapper) {
+        wrapper.classList.toggle('active');
+        document.querySelectorAll('.nav-dropdown-wrapper').forEach(w => {
+          if (w !== wrapper) w.classList.remove('active');
+        });
+      }
+    });
+  });
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown-wrapper').forEach(w => {
+      w.classList.remove('active');
+    });
+  });
+}
+
 // ─────────────────────────────────────────────────────────────────────────
 // 6. RUNTIME DOCUMENT INIT INITIALIZER
 // ─────────────────────────────────────────────────────────────────────────
@@ -710,6 +732,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupNavbarScroll();
   setupAccordion();
   setupHamburgerMenu();
+  setupDropdownToggles();
   setupOrbParallax();
   setupPricingHover();
   

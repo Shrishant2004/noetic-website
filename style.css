@@ -3634,6 +3634,24 @@ html.no-snap {
   font-weight: 600;
 }
 
+.nav-dropdown-wrapper.active .nav-dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(6px);
+}
+
+.nav-dropdown-wrapper.active .nav-dropdown-toggle .chevron {
+  transform: rotate(180deg);
+}
+
+.nav-mobile .mobile-sub-link {
+  padding-left: 20px;
+  font-size: 13px;
+  opacity: 0.75;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
 /* Hide floating cards on mobile viewports */
 @media (max-width: 960px) {
   .showcase-floating-card {
