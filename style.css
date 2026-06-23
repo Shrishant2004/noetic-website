@@ -747,6 +747,8 @@ a:hover {
   color: var(--text-primary);
   display: flex;
   align-items: baseline;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   line-height: 1;
 }
 
@@ -3723,4 +3725,245 @@ html.no-snap {
   .showcase-floating-card {
     display: none !important;
   }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   PREMIUM PRIVACY TRUST SECTION
+   ───────────────────────────────────────────────────────────────────────── */
+
+.privacy-trust-section {
+  position: relative;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+/* Central shield hero icon with glow */
+.privacy-hero-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.12), rgba(139, 92, 246, 0.12));
+  border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.privacy-hero-icon svg {
+  width: 36px;
+  height: 36px;
+  color: var(--cyan);
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.4));
+}
+
+/* Pulsing aura ring behind shield */
+.privacy-hero-icon::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 32px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%);
+  animation: privacyPulse 3s ease-in-out infinite;
+}
+
+@keyframes privacyPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.12); }
+}
+
+.privacy-trust-heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.privacy-trust-subheading {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 3.5rem;
+  font-size: 16px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Privacy cards grid */
+.privacy-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .privacy-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .privacy-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Individual privacy card — premium glassmorphism with animated border */
+.privacy-card {
+  position: relative;
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Animated gradient border glow on hover */
+.privacy-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.0), rgba(139, 92, 246, 0.0));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.45s ease;
+}
+
+.privacy-card:hover::before {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.5), rgba(139, 92, 246, 0.4));
+}
+
+/* Subtle inner glow on hover */
+.privacy-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.0) 0%, transparent 60%);
+  pointer-events: none;
+  transition: all 0.45s ease;
+}
+
+.privacy-card:hover::after {
+  background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.06) 0%, transparent 60%);
+}
+
+.privacy-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(6, 182, 212, 0.15);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 0 30px rgba(6, 182, 212, 0.04);
+}
+
+/* Card icon */
+.privacy-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.privacy-card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.privacy-card-icon.icon-lock {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(6, 182, 212, 0.05));
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  color: var(--cyan);
+}
+
+.privacy-card-icon.icon-shield {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.05));
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: var(--violet);
+}
+
+.privacy-card-icon.icon-trash {
+  background: linear-gradient(135deg, rgba(255, 176, 32, 0.15), rgba(255, 176, 32, 0.05));
+  border: 1px solid rgba(255, 176, 32, 0.2);
+  color: var(--gold);
+}
+
+.privacy-card-icon.icon-encrypt {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.privacy-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 2;
+}
+
+.privacy-card p {
+  font-size: 13.5px;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+/* Staggered reveal */
+.privacy-card:nth-child(1) { transition-delay: 0s; }
+.privacy-card:nth-child(2) { transition-delay: 0.08s; }
+.privacy-card:nth-child(3) { transition-delay: 0.16s; }
+.privacy-card:nth-child(4) { transition-delay: 0.24s; }
+
+/* Privacy CTA link */
+.privacy-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.privacy-cta-link:hover {
+  color: var(--cyan);
+  border-color: rgba(6, 182, 212, 0.25);
+  background: rgba(6, 182, 212, 0.05);
+  transform: translateX(4px);
+}
+
+.privacy-cta-link svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
+}
+
+.privacy-cta-link:hover svg {
+  transform: translateX(3px);
 }

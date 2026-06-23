@@ -741,11 +741,11 @@ function selectPlan(plan) {
   } else if (plan === 'yearly') {
     displayPrice.textContent = '₹999';
     if (displayStrikePrice) {
-      displayStrikePrice.textContent = '₹2,548';
+      displayStrikePrice.textContent = '₹1,188';
       displayStrikePrice.style.display = 'inline-block';
     }
-    displayPeriod.textContent = '/ year';
-    displaySavings.textContent = 'Save 60% compared to weekly';
+    displayPeriod.textContent = '/year';
+    displaySavings.textContent = 'Save 16% compared to monthly';
     planTag.textContent = 'Best Value';
     planTag.style.background = 'rgba(139, 92, 246, 0.15)';
     planTag.style.color = 'var(--violet)';
