@@ -716,7 +716,11 @@
 
         .language-list {
             height: 105px;
-            overflow: hidden;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+        .language-list::-webkit-scrollbar {
+            display: none;
         }
 
         .language-item {
@@ -995,7 +999,31 @@
             { code: "ml", name: "Malayalam" },
             { code: "bn", name: "Bengali" },
             { code: "kn", name: "Kannada" },
-            { code: "it", name: "Italian" }
+            { code: "it", name: "Italian" },
+            { code: "mr", name: "Marathi" },
+            { code: "gu", name: "Gujarati" },
+            { code: "pa", name: "Punjabi" },
+            { code: "or", name: "Odia" },
+            { code: "ur", name: "Urdu" },
+            { code: "ne", name: "Nepali" },
+            { code: "fa", name: "Persian" },
+            { code: "he", name: "Hebrew" },
+            { code: "vi", name: "Vietnamese" },
+            { code: "id", name: "Indonesian" },
+            { code: "th", name: "Thai" },
+            { code: "fil", name: "Filipino" },
+            { code: "ms", name: "Malay" },
+            { code: "sw", name: "Swahili" },
+            { code: "ru", name: "Russian" },
+            { code: "tr", name: "Turkish" },
+            { code: "nl", name: "Dutch" },
+            { code: "pl", name: "Polish" },
+            { code: "uk", name: "Ukrainian" },
+            { code: "el", name: "Greek" },
+            { code: "ro", name: "Romanian" },
+            { code: "sv", name: "Swedish" },
+            { code: "cs", name: "Czech" },
+            { code: "hu", name: "Hungarian" }
         ].sort((a, b) => a.name.localeCompare(b.name));
 
         const RESULT_TEXT = "Hi! I hope you're doing well. Our meeting was moved to tonight due to some last-minute project changes. What time and where should we meet finally? Let me know if you need me to pick you up, see you!";
@@ -1078,8 +1106,36 @@
             });
         }
 
+        function toggleLanguageMenu() {
+            showLanguageMenu = !showLanguageMenu;
+            const menu = document.getElementById('languageMenu');
+            if (menu) {
+                if (showLanguageMenu) {
+                    menu.classList.add('visible');
+                } else {
+                    menu.classList.remove('visible');
+                }
+            }
+        }
+
+        function selectLanguage(lang) {
+            targetLanguage = lang;
+            const nameEl = document.getElementById('targetLanguageName');
+            if (nameEl) nameEl.textContent = lang.name;
+            const resNameEl = document.getElementById('resultLanguageName');
+            if (resNameEl) resNameEl.textContent = lang.name;
+            
+            initLanguageList();
+            
+            showLanguageMenu = false;
+            const menu = document.getElementById('languageMenu');
+            if (menu) menu.classList.remove('visible');
+        }
+
         function initLanguageList() {
-            languageList.innerHTML = '';
+            const listEl = document.getElementById('languageList');
+            if (!listEl) return;
+            listEl.innerHTML = '';
             LANGUAGES.forEach((lang, index) => {
                 const item = document.createElement('div');
                 item.className = 'language-item' + (lang.code === targetLanguage.code ? ' selected' : '');
@@ -1087,7 +1143,12 @@
                     <span>${lang.name}</span>
                     ${lang.code === targetLanguage.code ? '<span class="check">✓</span>' : ''}
                 `;
-                languageList.appendChild(item);
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    selectLanguage(lang);
+                });
+                listEl.appendChild(item);
             });
         }
 
@@ -1356,6 +1417,22 @@
             // Restart loop
             await runLoop();
         }
+
+        // Global click delegator for interactive language selector
+        document.addEventListener('click', (e) => {
+            const changeBtn = e.target.closest('.change-btn');
+            const dropdownBtn = e.target.closest('.language-dropdown-btn');
+            if (changeBtn || dropdownBtn) {
+                toggleLanguageMenu();
+                return;
+            }
+            
+            const menu = document.getElementById('languageMenu');
+            if (menu && showLanguageMenu && !menu.contains(e.target)) {
+                showLanguageMenu = false;
+                menu.classList.remove('visible');
+            }
+        });
 
         // Start
         positionGlow();

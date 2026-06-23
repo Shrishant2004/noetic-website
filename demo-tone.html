@@ -992,6 +992,18 @@
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></svg>
                         <span>Gen Z</span>
                     </div>
+                    <div class="tone-chip" data-tone="Funny" id="chipFunny">
+                        <span style="font-size: 10px; line-height: 1; margin-right: 2px;">😂</span>
+                        <span>Funny</span>
+                    </div>
+                    <div class="tone-chip" data-tone="Flirty" id="chipFlirty">
+                        <span style="font-size: 10px; line-height: 1; margin-right: 2px;">😉</span>
+                        <span>Flirty</span>
+                    </div>
+                    <div class="tone-chip" data-tone="Scholarly" id="chipScholarly">
+                        <span style="font-size: 10px; line-height: 1; margin-right: 2px;">🎓</span>
+                        <span>Scholarly</span>
+                    </div>
                 </div>
                 <div class="content-card" id="contentCard">
                     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 10px;">
@@ -1030,7 +1042,13 @@
         const DRAFT_STR = "can you send me the project report\nwhenever you get a chance today";
         const TONE_RESULTS = {
             "Professional": "Could you please forward the project report at your earliest convenience today?",
-            "Gen Z": "yo drop the project report rn pls fr, need it today"
+            "Casual": "hey, send over the project report whenever you get a second today, thanks!",
+            "Polite": "Would you mind sending me the project report when you have a moment today?",
+            "Friendly": "Hey! Could you please send over the project report whenever you get a chance today? Thanks a lot!",
+            "Gen Z": "yo drop the project report rn pls fr, need it today",
+            "Funny": "need that project report today or else I will have to start working (please send help) 😂",
+            "Flirty": "send the project report over whenever you can? would love to check it out 😉",
+            "Scholarly": "Could you please submit the comprehensive project thesis at your earliest convenience today? 🎓"
         };
         const BOSS_STR = "Anything I can help with today? 👋";
         let selectedTone = null;
@@ -1151,6 +1169,11 @@
             magicParticles = [];
             fadeAll = false;
             selectedTone = null;
+
+            // Reset chips selection and scroll
+            const chips = document.querySelectorAll('.tone-chip');
+            chips.forEach(c => c.classList.remove('selected', 'glowing', 'pressed'));
+            if (toneChipsRow) toneChipsRow.scrollLeft = 0;
 
             // Reset UI — disable transitions temporarily to prevent flash during restart
             sentBubble.style.transition = 'none';
