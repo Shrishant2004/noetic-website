@@ -708,6 +708,7 @@ function selectPlan(plan) {
   });
 
   const displayPrice = document.getElementById('display-price');
+  const displayStrikePrice = document.getElementById('display-strike-price');
   const displayPeriod = document.getElementById('display-period');
   const displaySavings = document.getElementById('display-savings');
   const planTag = document.getElementById('plan-tag');
@@ -716,6 +717,9 @@ function selectPlan(plan) {
 
   if (plan === 'weekly') {
     displayPrice.textContent = '₹49';
+    if (displayStrikePrice) {
+      displayStrikePrice.style.display = 'none';
+    }
     displayPeriod.textContent = '/ week';
     displaySavings.textContent = 'Flexible weekly billing';
     planTag.textContent = 'Basic';
@@ -724,16 +728,24 @@ function selectPlan(plan) {
     planTag.style.borderColor = 'rgba(0,122,255,0.3)';
   } else if (plan === 'monthly') {
     displayPrice.textContent = '₹99';
+    if (displayStrikePrice) {
+      displayStrikePrice.textContent = '₹200';
+      displayStrikePrice.style.display = 'inline-block';
+    }
     displayPeriod.textContent = '/ month';
-    displaySavings.textContent = 'Save 50% compared to weekly (~₹200/month)';
+    displaySavings.textContent = 'Save 50% compared to weekly';
     planTag.textContent = 'Most Popular';
     planTag.style.background = 'rgba(255,176,32,0.15)';
     planTag.style.color = 'var(--gold)';
     planTag.style.borderColor = 'rgba(255,176,32,0.3)';
   } else if (plan === 'yearly') {
     displayPrice.textContent = '₹999';
+    if (displayStrikePrice) {
+      displayStrikePrice.textContent = '₹2,548';
+      displayStrikePrice.style.display = 'inline-block';
+    }
     displayPeriod.textContent = '/ year';
-    displaySavings.textContent = 'Save 16% compared to monthly (~₹1,188/year)';
+    displaySavings.textContent = 'Save 60% compared to weekly';
     planTag.textContent = 'Best Value';
     planTag.style.background = 'rgba(139, 92, 246, 0.15)';
     planTag.style.color = 'var(--violet)';

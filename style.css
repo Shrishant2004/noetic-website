@@ -750,11 +750,23 @@ a:hover {
   line-height: 1;
 }
 
-.price-display-amount span:first-child {
+#display-price {
   background: var(--gradient-brand);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.price-display-strike {
+  text-decoration: line-through;
+  opacity: 0.45;
+  margin-right: 0.6rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: none !important;
+  -webkit-text-fill-color: var(--text-secondary) !important;
+  display: inline-block;
 }
 
 .price-display-period {
