@@ -679,7 +679,7 @@ function selectPlan(plan) {
   } else if (plan === 'monthly') {
     displayPrice.textContent = '₹99';
     displayPeriod.textContent = '/ month';
-    displaySavings.textContent = 'Save 50% compared to weekly';
+    displaySavings.textContent = 'Save 50% compared to weekly (~₹200/month)';
     planTag.textContent = 'Most Popular';
     planTag.style.background = 'rgba(255,176,32,0.15)';
     planTag.style.color = 'var(--gold)';
@@ -687,7 +687,7 @@ function selectPlan(plan) {
   } else if (plan === 'yearly') {
     displayPrice.textContent = '₹999';
     displayPeriod.textContent = '/ year';
-    displaySavings.textContent = 'Save 60% compared to monthly';
+    displaySavings.textContent = 'Save 16% compared to monthly (~₹1,188/year)';
     planTag.textContent = 'Best Value';
     planTag.style.background = 'rgba(139, 92, 246, 0.15)';
     planTag.style.color = 'var(--violet)';
