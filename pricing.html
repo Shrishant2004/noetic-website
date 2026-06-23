@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Noetic — Learn about our mission to make clear, confident writing accessible to everyone.">
-  <meta property="og:title" content="About — Noetic">
-  <meta property="og:description" content="Built for better words. Learn about Noetic and our values.">
+  <meta name="description" content="Noetic Pricing — Unlock Premium and write without limits. Choose the plan that fits your workflow.">
+  <meta property="og:title" content="Pricing — Noetic">
+  <meta property="og:description" content="Unlock Noetic Premium. Choose weekly, monthly, or yearly plans.">
   <meta property="og:image" content="noetic-logo.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About — Noetic">
-  <meta name="twitter:description" content="Built for better words. Learn about Noetic and our values.">
+  <meta name="twitter:title" content="Pricing — Noetic">
+  <meta name="twitter:description" content="Unlock Noetic Premium. Choose weekly, monthly, or yearly plans.">
   <meta name="twitter:image" content="noetic-logo.png">
-  <link rel="canonical" href="https://www.noetickeyboard.com/about">
+  <link rel="canonical" href="https://www.noetickeyboard.com/pricing">
   <link rel="icon" href="noetic-logo.png" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="NoeticLogoblack.png" media="(prefers-color-scheme: light)">
-  <title>About — Noetic</title>
+  <title>Pricing — Noetic</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -25,14 +25,14 @@
 <!-- NAVIGATION -->
 <nav>
   <div class="nav-container">
-    <div class="nav-logo">
+    <div class="nav-logo" onclick="window.location.href='/'">
       <img src="noetic-logo.png" alt="Noetic" class="logo-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
       <span class="logo-text" style="display:none;">Noetic</span>
     </div>
     
     <ul class="nav-links">
       <li><a href="/#features">Features</a></li>
-      <li><a href="pricing">Pricing</a></li>
+      <li><a href="pricing" class="active-nav-link">Pricing</a></li>
       <li class="nav-dropdown-wrapper">
         <a class="nav-dropdown-toggle">Company <span class="chevron">▼</span></a>
         <div class="nav-dropdown-menu">
@@ -65,7 +65,7 @@
       </li>
     </ul>
     
-    <button class="btn btn-ghost nav-cta" onclick="window.location.href='#'"><!-- TODO: Replace # with actual App Store URL after approval -->Download Free</button>
+    <button class="btn btn-ghost nav-cta" onclick="window.location.href='#'">Download Free</button>
     
     <button class="hamburger" id="hamburger">
       <span></span>
@@ -89,100 +89,64 @@
   </div>
 </nav>
 
-<!-- ABOUT SECTION -->
+<!-- PRICING SECTION -->
 <section class="section" style="position: relative; padding: 8rem 0 5rem 0;">
   <div class="orb orb-1" style="top: -100px; left: -150px;"></div>
   <div class="orb orb-2" style="bottom: -50px; right: -100px;"></div>
   
-  <div class="container" style="position: relative; z-index: 1;">
-    <div class="section-content reveal">
-      <h1 style="text-align: center; margin-bottom: 3rem;">Built for better words.</h1>
-      
-      <p style="font-size: 16px; line-height: 1.8; margin-bottom: 1.5rem;">
-        Noetic is an AI keyboard for iPhone that puts powerful writing tools exactly where you need them — inside the keyboard itself. No copy-pasting between apps. No context switching. Just type, tap, and write better.
-      </p>
-      
-      <p style="font-size: 16px; line-height: 1.8; margin-bottom: 1.5rem;">
-        We built Noetic because we got tired of switching apps just to fix a badly worded message. Writing is hard enough. Your keyboard should help. So we built one that actually does — for every text field, in every app, for every kind of writing.
-      </p>
-      
-      <p style="font-size: 16px; line-height: 1.8; margin-bottom: 3rem;">
-        Our mission is simple: make clear, confident writing accessible to everyone. Whether you're a student, a professional, or just someone who wants to sound better in a text message — Noetic is for you.
-      </p>
-      
-      <!-- Values Grid -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;" class="reveal-group">
-        <div class="glass" style="padding: 2rem; border-radius: var(--radius-lg); text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: 1rem;">🔒</div>
-          <h3 style="font-size: 16px; margin-bottom: 0.5rem; font-weight: 600;">Privacy First</h3>
-          <p style="font-size: 14px; color: var(--text-tertiary);">We only process what you choose to share.</p>
+  <div class="container reveal" style="position: relative; z-index: 1;">
+    <h1 style="text-align: center; margin-bottom: 0.5rem; font-size: 2.5rem; font-weight: 800;">Unlock Premium. Write Without Limits.</h1>
+    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 4rem;">Choose the plan that fits your workflow.</p>
+    
+    <div class="pricing-section-container">
+      <!-- iOS Segmented Control (hstack) -->
+      <div class="pricing-selector-container">
+        <div class="ios-segmented-control">
+          <button class="ios-segment-btn" data-plan="weekly" onclick="selectPlan('weekly')">Weekly</button>
+          <button class="ios-segment-btn active" data-plan="monthly" onclick="selectPlan('monthly')">Monthly</button>
+          <button class="ios-segment-btn" data-plan="yearly" onclick="selectPlan('yearly')">Yearly</button>
+        </div>
+      </div>
+
+      <!-- Horizontal Pricing Sheet -->
+      <div class="premium-horizontal-sheet">
+        <div class="pricing-sheet-left">
+          <div class="pricing-sheet-badge-row">
+            <span class="pricing-sheet-badge">Premium</span>
+            <span class="pricing-sheet-tag" id="plan-tag">Most Popular</span>
+          </div>
+          
+          <div class="price-display-wrapper">
+            <div class="price-display-amount">
+              <span id="display-price">₹99</span>
+              <span class="price-display-period" id="display-period">/ month</span>
+            </div>
+            <div class="price-savings-alert" id="display-savings">Save 50% compared to weekly</div>
+          </div>
+          
+          <p class="pricing-sheet-desc">
+            Unlock the full power of Noetic. Write, rewrite, translate, and correct grammar instantly in all your favorite apps.
+          </p>
+          
+          <button class="btn btn-primary pricing-cta" onclick="window.location.href='#'" style="width: 100%;">Unlock Premium</button>
         </div>
         
-        <div class="glass" style="padding: 2rem; border-radius: var(--radius-lg); text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: 1rem;">🎯</div>
-          <h3 style="font-size: 16px; margin-bottom: 0.5rem; font-weight: 600;">Clarity Over Complexity</h3>
-          <p style="font-size: 14px; color: var(--text-tertiary);">One tap. No menus. No confusion.</p>
-        </div>
-        
-        <div class="glass" style="padding: 2rem; border-radius: var(--radius-lg); text-align: center;">
-          <div style="font-size: 2rem; margin-bottom: 1rem;">🌍</div>
-          <h3 style="font-size: 16px; margin-bottom: 0.5rem; font-weight: 600;">Made for Everyone</h3>
-          <p style="font-size: 14px; color: var(--text-tertiary);">40+ languages, including Indian regional languages.</p>
+        <div class="pricing-sheet-right">
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">All Premium Features Included</h3>
+          <ul class="pricing-sheet-features-list">
+            <li><strong>Unlimited</strong> corrections (No credit limit)</li>
+            <li>Access to all 5 AI tools & 41 languages</li>
+            <li>Create & customize your own writing tones</li>
+            <li>Priority AI processing speed</li>
+            <li>Works seamlessly in every keyboard-enabled app</li>
+          </ul>
+          <p style="font-size: 12px; color: var(--text-tertiary); text-align: center; margin: 0;">Cancel anytime in App Store settings</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- CONTACT FORM SECTION -->
-<section class="section" style="background: var(--bg-alt); padding: 5rem 0;">
-  <div class="container">
-    <h2 style="text-align: center; margin-bottom: 0.5rem; reveal">Get in touch.</h2>
-    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; reveal">Questions, feedback, press inquiries, or partnership ideas — we read every message.</p>
     
-    <div style="max-width: 500px; margin: 0 auto;">
-      <!-- Contact Form -->
-      <form class="contact-form glass" action="https://formspree.io/f/mpqejjda" method="POST" style="padding: 2rem; border-radius: var(--radius-lg); reveal">
-        <!-- Name Field -->
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" placeholder="John Doe" required>
-        </div>
-        
-        <!-- Email Field -->
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required>
-        </div>
-        
-        <!-- Subject Field -->
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <select id="subject" name="subject" required>
-            <option value="">Select a subject...</option>
-            <option value="General Inquiry">General Inquiry</option>
-            <option value="Bug Report">Bug Report</option>
-            <option value="Feature Request">Feature Request</option>
-            <option value="Press">Press</option>
-            <option value="Partnership">Partnership</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        
-        <!-- Message Field -->
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
-        </div>
-        
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-gradient" style="width: 100%; margin-top: 1rem;">Send Message →</button>
-      </form>
-      
-      <!-- Form Note -->
-      <p style="text-align: center; font-size: 12px; color: var(--text-tertiary); margin-top: 1rem;">
-        <!-- This form opens the user's email client. For a true server-side contact form, replace this with a Formspree or EmailJS integration later. -->
-      </p>
+    <div style="text-align: center; background: var(--surface); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border); margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+      <p style="font-size: 13px; color: var(--text-secondary);">Pricing shown in Indian Rupees. Available via in-app purchase on the App Store.</p>
     </div>
   </div>
 </section>
