@@ -1209,7 +1209,7 @@ a:hover {
 }
 
 .hero-headline {
-  font-weight: 300;
+  font-weight: 200;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
   line-height: 1.15;
