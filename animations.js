@@ -194,7 +194,7 @@ function setupParticleWaveCanvas() {
     img.src = `./assets/apps/${cfg.file}`;
     
     const orbitScale = 0.135 + (idx * 0.028); 
-    const speedVal = 0.0024; 
+    const speedVal = 0.004; 
     apps.push({
       img,
       name: cfg.name,
@@ -680,24 +680,26 @@ function startWordSwap() {
   let currentIdx = 0; // 0 = "app.", 1-5 = icons
   const totalStates = appAssets.length + 1; // 6 states
 
-  setInterval(() => {
-    swapSpan.style.opacity = '0';
-    swapSpan.style.transform = 'translateY(-8px)';
-    swapSpan.style.filter = 'blur(4px)';
+  setTimeout(() => {
+    setInterval(() => {
+      swapSpan.style.opacity = '0';
+      swapSpan.style.transform = 'translateY(-8px)';
+      swapSpan.style.filter = 'blur(4px)';
 
-    setTimeout(() => {
-      currentIdx = (currentIdx + 1) % totalStates;
+      setTimeout(() => {
+        currentIdx = (currentIdx + 1) % totalStates;
 
-      if (currentIdx === 0) {
-        swapSpan.innerHTML = 'app.';
-      } else {
-        swapSpan.innerHTML = `<img src="${appAssets[currentIdx - 1]}" alt="" class="swap-icon">`;
-      }
+        if (currentIdx === 0) {
+          swapSpan.innerHTML = 'app.';
+        } else {
+          swapSpan.innerHTML = `<img src="${appAssets[currentIdx - 1]}" alt="" class="swap-icon">`;
+        }
 
-      swapSpan.style.opacity = '1';
-      swapSpan.style.transform = 'translateY(0)';
-      swapSpan.style.filter = 'blur(0)';
-    }, 200);
+        swapSpan.style.opacity = '1';
+        swapSpan.style.transform = 'translateY(0)';
+        swapSpan.style.filter = 'blur(0)';
+      }, 200);
+    }, 2000);
   }, 2000);
 }
 

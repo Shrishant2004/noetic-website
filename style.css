@@ -1232,10 +1232,10 @@ a:hover {
 #word-swap {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  vertical-align: baseline;
-  min-width: 80px;
-  min-height: 1em;
+  justify-content: flex-start;
+  vertical-align: middle;
+  width: 1.8em;
+  min-height: 1.2em;
   text-align: left;
   transition: opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
   font-weight: 700;
@@ -1245,7 +1245,7 @@ a:hover {
 .swap-icon {
   height: 0.75em;
   width: auto;
-  vertical-align: baseline;
+  vertical-align: -0.08em;
   margin-left: 4px;
   display: inline-block;
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
@@ -1255,7 +1255,7 @@ a:hover {
 .hero-desc {
   font-size: clamp(16px, 2.5vw, 20px);
   color: rgba(255, 255, 255, 0.75);
-  max-width: 480px;
+  max-width: 580px;
   margin: 0 auto 2.5rem auto;
   line-height: 1.6;
   font-weight: 400;
