@@ -274,16 +274,7 @@ function setupParticleWaveCanvas() {
     ctx.stroke();
   }
 
-  function updateTextAssembly() {
-    if (!headlineEl || !subheadlineEl) return;
-    if (headlineProgress < copyDeck.headline.length) {
-      headlineProgress += 0.5;
-      headlineEl.textContent = copyDeck.headline.slice(0, Math.floor(headlineProgress));
-    } else if (subheadlineProgress < copyDeck.subheadline.length) {
-      subheadlineProgress += 0.7;
-      subheadlineEl.textContent = copyDeck.subheadline.slice(0, Math.floor(subheadlineProgress));
-    }
-  }
+
 
   // Unified Rendering Runtime
   function universeLoop(timestamp) {
@@ -462,7 +453,6 @@ function setupParticleWaveCanvas() {
       environmentalHueShift.intensity -= 0.008;
     }
 
-    updateTextAssembly();
     animationFrameId = requestAnimationFrame(universeLoop);
   }
 
