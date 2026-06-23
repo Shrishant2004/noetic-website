@@ -19,7 +19,7 @@ function setupFeatureAnimations() {
   const textBlocks = document.querySelectorAll('.showcase-text-block');
   if (!textBlocks.length) return;
 
-  const isMobile = window.innerWidth < 961;
+    const isMobile = window.innerWidth < 961;
 
   function sendPlay(iframe) {
     if (iframe && iframe.contentWindow) {
@@ -50,49 +50,45 @@ function setupFeatureAnimations() {
         });
         entry.target.classList.add('active');
 
-        if (!isMobile) {
-          // ── Desktop Pinned Logic ──
-          const targetIframe = document.querySelector(`.glass-demo-iframes iframe[data-feature="${feature}"]`);
-          const allIframes = document.querySelectorAll('.glass-demo-iframes iframe');
-          
-          allIframes.forEach(iframe => {
-            if (iframe === targetIframe) {
-              iframe.classList.add('active');
-              setTimeout(() => sendPlay(iframe), 300);
-            } else {
-              iframe.classList.remove('active');
-              sendReset(iframe);
-            }
-          });
-
-          const glowIndicator = document.getElementById('showcase-glow-indicator');
-          if (glowIndicator) {
-            glowIndicator.className = 'glass-frame-glow'; // reset
-            if (feature === 'grammar' || feature === 'translate') {
-              glowIndicator.classList.add('glow-blue');
-            } else if (feature === 'tone') {
-              glowIndicator.classList.add('glow-violet');
-            } else if (feature === 'assist') {
-              glowIndicator.classList.add('glow-mixed');
-            } else if (feature === 'summarize') {
-              glowIndicator.classList.add('glow-gold');
-            }
+        // Always update the sticky panel iframes (active on both mobile & desktop)
+        const targetIframe = document.querySelector(`.glass-demo-iframes iframe[data-feature="${feature}"]`);
+        const allIframes = document.querySelectorAll('.glass-demo-iframes iframe');
+        
+        allIframes.forEach(iframe => {
+          if (iframe === targetIframe) {
+            iframe.classList.add('active');
+            setTimeout(() => sendPlay(iframe), 300);
+          } else {
+            iframe.classList.remove('active');
+            sendReset(iframe);
           }
-        } else {
-          // ── Mobile Standard Logic ──
-          const mobileIframe = entry.target.querySelector('.mobile-only-demo-wrap iframe');
-          if (mobileIframe) {
-            setTimeout(() => sendPlay(mobileIframe), 300);
+        });
+
+        // Maintain inline fallback logic for safety
+        const mobileIframe = entry.target.querySelector('.mobile-only-demo-wrap iframe');
+        if (mobileIframe) {
+          setTimeout(() => sendPlay(mobileIframe), 300);
+        }
+
+        const glowIndicator = document.getElementById('showcase-glow-indicator');
+        if (glowIndicator) {
+          glowIndicator.className = 'glass-frame-glow'; // reset
+          if (feature === 'grammar' || feature === 'translate') {
+            glowIndicator.classList.add('glow-blue');
+          } else if (feature === 'tone') {
+            glowIndicator.classList.add('glow-violet');
+          } else if (feature === 'assist') {
+            glowIndicator.classList.add('glow-mixed');
+          } else if (feature === 'summarize') {
+            glowIndicator.classList.add('glow-gold');
           }
         }
 
       } else {
         entry.target.classList.remove('active');
 
-        if (isMobile) {
-          const mobileIframe = entry.target.querySelector('.mobile-only-demo-wrap iframe');
-          if (mobileIframe) sendReset(mobileIframe);
-        }
+        const mobileIframe = entry.target.querySelector('.mobile-only-demo-wrap iframe');
+        if (mobileIframe) sendReset(mobileIframe);
       }
     });
 
@@ -114,14 +110,20 @@ function setupFeatureAnimations() {
   textBlocks.forEach(block => {
     showcaseObserver.observe(block);
     
-    const iframe = isMobile 
-      ? block.querySelector('.mobile-only-demo-wrap iframe')
-      : document.querySelector(`.glass-demo-iframes iframe[data-feature="${block.getAttribute('data-feature')}"]`);
-      
+    const iframe = document.querySelector(`.glass-demo-iframes iframe[data-feature="${block.getAttribute('data-feature')}"]`);
     if (iframe) {
       iframe.addEventListener('load', () => {
         if (block.classList.contains('active')) {
           sendPlay(iframe);
+        }
+      });
+    }
+
+    const mobileIframe = block.querySelector('.mobile-only-demo-wrap iframe');
+    if (mobileIframe) {
+      mobileIframe.addEventListener('load', () => {
+        if (block.classList.contains('active')) {
+          sendPlay(mobileIframe);
         }
       });
     }

@@ -3437,67 +3437,84 @@ html {
 
 @media (max-width: 960px) {
   .pinned-showcase-container {
-    display: block;
-    width: 100%;
-  }
-
-  .showcase-sticky-panel {
-    display: none !important;
-  }
-
-  .showcase-scroll-column {
+    display: flex !important;
+    flex-direction: row !important;
+    position: relative;
     width: 100% !important;
   }
 
+  .showcase-sticky-panel {
+    display: flex !important;
+    width: 42% !important;
+    height: 100vh !important;
+    position: sticky !important;
+    top: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: visible !important;
+    z-index: 10 !important;
+  }
+
+  .showcase-sticky-panel .premium-glass-frame-wrap {
+    transform: scale(0.55);
+    transform-origin: center center;
+  }
+
+  .showcase-scroll-column {
+    width: 58% !important;
+  }
+
   .showcase-text-block {
-    height: auto !important;
-    min-height: auto !important;
-    padding: 4rem 1.5rem !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    padding: 3rem 1rem 3rem 1.5rem !important;
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    text-align: left !important;
   }
 
   .showcase-text-inner {
+    opacity: 0.3 !important;
+    transform: translateY(20px) !important;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+
+  .showcase-text-block.active .showcase-text-inner {
     opacity: 1 !important;
-    transform: none !important;
-    width: 100%;
-    max-width: 550px;
-    margin-bottom: 2rem;
+    transform: translateY(0) !important;
+  }
+
+  .showcase-text-inner h2 {
+    font-size: clamp(20px, 4.2vw, 30px) !important;
+  }
+
+  .showcase-text-inner p {
+    font-size: 0.85rem !important;
   }
 
   .showcase-text-inner .feat-list {
-    text-align: left;
-    display: inline-block;
+    text-align: left !important;
+    display: block !important;
+  }
+
+  .showcase-iframe {
+    transform: translateX(60px) scale(0.95) !important;
+    opacity: 0 !important;
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .showcase-iframe.active {
+    transform: translateX(0) scale(1) !important;
+    opacity: 1 !important;
   }
 
   .mobile-only-demo-wrap {
-    display: flex;
-    position: relative;
-    width: 230px;
-    height: 720px;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-  }
-
-  .mobile-only-demo-wrap iframe {
-    position: relative;
-    z-index: 2;
-    border-radius: 36px;
-  }
-
-  .mobile-only-demo-wrap .feature-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 600px;
-    filter: blur(60px);
-    opacity: 0.15;
-    z-index: 0;
+    display: none !important;
   }
 }
 
@@ -4087,4 +4104,57 @@ html.no-snap {
 
 .privacy-cta-link:hover svg {
   transform: translateX(3px);
+}
+
+/* ==========================================================================
+   DYNAMIC HEIGHT & FLUID TYPOGRAPHY SCALING
+   ========================================================================== */
+@media (max-height: 850px) {
+  :root {
+    --nav-height: 52px !important;
+  }
+  h1 {
+    font-size: clamp(34px, 5.5vh, 68px) !important;
+  }
+  h2 {
+    font-size: clamp(26px, 4.5vh, 44px) !important;
+  }
+  h3 {
+    font-size: clamp(18px, 3.8vh, 28px) !important;
+  }
+  p {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+  }
+  .hero-desc {
+    max-width: 680px !important;
+    margin-bottom: 1.5rem !important;
+  }
+  .hero-buttons .btn {
+    min-width: 170px !important;
+    padding: 10px 20px !important;
+  }
+  .section-hero {
+    padding-top: calc(var(--nav-height) + 10px) !important;
+    padding-bottom: 2rem !important;
+  }
+  .badge-pill-wrap {
+    margin-bottom: 1.25rem !important;
+  }
+  .hero-buttons {
+    margin-bottom: 1.25rem !important;
+  }
+}
+
+@media (max-height: 700px) {
+  h1 {
+    font-size: clamp(28px, 5vh, 52px) !important;
+  }
+  h2 {
+    font-size: clamp(22px, 4vh, 34px) !important;
+  }
+  .hero-desc {
+    font-size: 0.9rem !important;
+    max-width: 600px !important;
+  }
 }
