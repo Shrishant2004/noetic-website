@@ -699,8 +699,8 @@ function startWordSwap() {
         swapSpan.style.transform = 'translateY(0)';
         swapSpan.style.filter = 'blur(0)';
       }, 200);
-    }, 2000);
-  }, 2000);
+    }, 1300);
+  }, 1000);
 }
 
 // ─────────────────────────────────────────────────────────────────────────
