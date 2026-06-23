@@ -3453,6 +3453,7 @@ html.no-snap {
   transform: translate(0, 0) scale(1) rotate(-6deg);
   z-index: 10;
   animation: floatCardDraft 5s ease-in-out infinite alternate;
+  animation-delay: 0.8s;
 }
 
 .showcase-iframe[data-feature="grammar"].active ~ .card-grammar-stats {
@@ -3460,6 +3461,7 @@ html.no-snap {
   transform: translate(0, 0) scale(1) rotate(6deg);
   z-index: 10;
   animation: floatCardStats 5.5s ease-in-out infinite alternate;
+  animation-delay: 0.8s;
 }
 
 @keyframes floatCardDraft {
