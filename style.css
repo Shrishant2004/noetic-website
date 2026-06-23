@@ -4158,3 +4158,13 @@ html.no-snap {
     max-width: 600px !important;
   }
 }
+
+.hero-br {
+  display: block;
+}
+
+@media (max-width: 960px) {
+  .hero-br {
+    display: none;
+  }
+}
