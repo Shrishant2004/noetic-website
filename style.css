@@ -1085,12 +1085,17 @@ a:hover {
   width: 550px;
   height: 550px;
   background: radial-gradient(circle, rgba(168, 85, 247, 0.14) 0%, transparent 70%);
-  bottom: 12%;
-  right: -8%;
+  top: -10%;
+  right: -10%;
   animation: drift-2 20s ease-in-out infinite;
 }
 .orb-3 {
-  display: none;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(255, 176, 32, 0.12) 0%, transparent 70%);
+  bottom: -15%;
+  left: calc(50% - 225px);
+  animation: drift-3 30s ease-in-out infinite;
 }
 
 @keyframes drift-1 {
